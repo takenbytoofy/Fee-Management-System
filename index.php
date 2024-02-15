@@ -6,6 +6,10 @@
     <title>Document</title>
 </head>
 <body>
+<<<<<<< HEAD
     
+=======
+    This is temporary branch.
+>>>>>>> tempBranch
 </body>
 </html>

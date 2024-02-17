@@ -1,11 +1,6 @@
 /* Header style code */
-#page-container {
-    position: relative;
-    min-height: 100vh;
-}
-
-#content-wrap {
-    padding-bottom: 2.5rem;
+body {
+    background-color: blue;
 }
 
 /* CSS for index page */

@@ -1,6 +1,8 @@
 <?php
-    include("./PHP/Layouts/header.php");
+    include("./Layouts/header.php");
 ?>
+
+<link rel="stylesheet" href="/CSS/style.css">
 
 <!-- HTML Code -->
 
@@ -14,5 +16,5 @@
 </div>
 
 <?php
-    include("./PHP/Layouts/footer.php");
+    include("./Layouts/footer.php");
 ?>

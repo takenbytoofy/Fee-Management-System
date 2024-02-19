@@ -3,6 +3,7 @@
     include("../Layouts/header.php");
 ?>
 
+
 <style>
 
     #login-page-container {
@@ -10,9 +11,9 @@
         height: 100%;
         width:100%;
     }
-    
-</style>
 
+
+</style>
 
 <div id="login-page-container">
 

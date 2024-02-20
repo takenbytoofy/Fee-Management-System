@@ -40,6 +40,10 @@
                     </a><br>
             </nav>
         </div>
+
+        <div id="page-title"> Insert Tile
+
+        </div>
     </body>
     <style>
         
@@ -53,12 +57,26 @@
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 
 }
+
 .container{
     display: flex;
     height: 100vh;
     float: left;
     width: 300px;
     
+}
+
+#page-title{
+    margin-top: 10px;
+    background-color: #7a7edb;
+    font-size: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    border-style: solid;
+    border-width: 3px;
+    border-color: white;
 }
 
 .user-name{

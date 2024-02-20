@@ -1,6 +1,7 @@
 <?php
     $pageTitle = "Login Page";
     include("../Layouts/header.php");
+    include("../Layouts/nav.php");
 ?>
 
 

@@ -4,7 +4,6 @@
     include("../Layouts/nav.php");
 ?>
 
-
 <style>
 
     #login-page-container {
@@ -12,7 +11,6 @@
         height: 100%;
         width:100%;
     }
-
 
 </style>
 

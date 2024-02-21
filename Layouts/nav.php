@@ -2,7 +2,9 @@
 <div id="student-dashboard">
 
     <div class = "student-nav-container">
+
         <nav>
+
             <span id="student-name" > Student Name </span> 
 
             <hr id="seperator"> 
@@ -65,17 +67,20 @@
 
     #student-dashboard {
         background-color: rgb(236, 232, 232);
+        display: flex;
     }
 
     #student-nav-container {
         display: flex;
-        height: 100%;
+        height: 100vh;
         float: left;
-        width: 300px;   
+        width: 300px;
+        align-items:center;  
     }
 
     #student-page-title {
-        margin-top: 10px;
+        width: 100%;
+        height: 50px;
         background-color: #7a7edb;
         font-size: 25px;
         display: flex;
@@ -125,7 +130,6 @@
         font-size: 20px;
         display: flex;
         align-items: center;
-        
     }
 
     .nav-item {

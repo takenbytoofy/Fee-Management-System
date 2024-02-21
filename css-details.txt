@@ -1,1 +1,3 @@
 Background Colour Hex Code - #
+
+Font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;

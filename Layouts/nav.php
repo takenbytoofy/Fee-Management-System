@@ -1,8 +1,6 @@
 
 <div id="student-dashboard">
-
-    <div class = "student-nav-container">
-
+    <div id = "student-nav-container">
         <nav>
 
             <span id="student-name" > Student Name </span> 
@@ -13,10 +11,10 @@
                 <i class=" fas fa-bars"></i>
                 <span class="nav-item"> Dashboard </span>
             </a><br>
-                
+            
             <a href="#" class="nav-bar">
                 <i class=" fas fa-solid fa-user"></i>
-                <span class="nav-item"> My Details </span>
+                <span class="nav-item"> Student Detail </span>
             </a><br>
 
             <a href="#" class="nav-bar">
@@ -43,19 +41,17 @@
                 <i class="fas fa-sign-out-alt"></i>
                 <span class="nav-item"> Logout </span>
             </a><br>
+
         </nav>
     </div>
-    
+
     <div id="student-page-title">
-        Insert Title
+        <?php echo $studentPageTitle?>
     </div>
 
-</div>   
-
-
 <style>
-       
-    * {
+    
+    *{
         margin:0;
         padding: 0;
         outline: none;
@@ -65,22 +61,19 @@
         font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     }
 
-    #student-dashboard {
+    
+    #student-dashboard{
         background-color: rgb(236, 232, 232);
-        display: flex;
     }
 
-    #student-nav-container {
+    #student-nav-container{
         display: flex;
         height: 100vh;
         float: left;
         width: 300px;
-        align-items:center;  
     }
 
-    #student-page-title {
-        width: 100%;
-        height: 50px;
+    #student-page-title{
         background-color: #7a7edb;
         font-size: 25px;
         display: flex;
@@ -92,7 +85,7 @@
         border-color: white;
     }
 
-    #student-name {
+    #student-name{
         margin: 10px;
         display: flex;
         justify-content: center;
@@ -103,15 +96,14 @@
         font-size: 18px;
     }
 
-    #seperator {
+    #seperator{
         width: 280px;
         background-color: #4D52D3;
         height: 2px;
         margin-left: 10px;
-    
     }
 
-    nav {
+    nav{
         position: relative;
         top: 0;
         bottom:0;
@@ -124,26 +116,26 @@
         padding-bottom: 20%;
     }
 
-    nav .fas {
+    nav .fas{
         width: 70px;
         height: 50px;
         font-size: 20px;
         display: flex;
-        align-items: center;
+        align-items: center;    
     }
 
-    .nav-item {
+    .nav-item{
         font-size: 20px;
         height: 50px;
         display: flex;
         align-items: center;
     }
 
-    .nav-bar:hover {
+    .nav-bar:hover{
         background: rgb(149, 164, 235);
     }
 
-    .nav-bar {
+    .nav-bar{
         border-radius: 15px;
         background-color: white; 
         padding-left: 20px;

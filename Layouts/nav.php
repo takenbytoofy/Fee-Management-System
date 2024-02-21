@@ -44,7 +44,6 @@
         </nav>
     </div>
     
-
     <div id="student-page-title">
         Insert Title
     </div>
@@ -111,7 +110,7 @@
         position: relative;
         top: 0;
         bottom:0;
-        height: 120vh;
+        height: 100vh;
         left:0;
         background: #D1DBFD;
         width: 300px;
@@ -130,14 +129,10 @@
     }
 
     .nav-item {
-        /* position:relative; */
-        
         font-size: 20px;
         height: 50px;
         display: flex;
         align-items: center;
-
-        
     }
 
     .nav-bar:hover {
@@ -155,7 +150,6 @@
         color: rgb(76, 74, 74);
         font-size: 14px;
         width: 280px;
-    
     }
 
 </style>

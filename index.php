@@ -3,8 +3,6 @@
     include("./Layouts/header.php");
 ?>
 
-<!-- HTML Code -->
-
 <!-- CSS for the page -->
 <style>
     
@@ -55,6 +53,8 @@
 
 </style>
 
+
+<!-- HTML Code -->
 <div id="index-page-container">
     
     <!-- Making an Initial Navigation bar -->
@@ -66,6 +66,7 @@
     </div>
 
 </div>
+
 
 <?php
     include("./Layouts/footer.php");

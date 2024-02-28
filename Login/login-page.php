@@ -22,7 +22,7 @@
 
 <style>
     body.login{
-    background-image: url(form_image.jpg);
+    background-image: url(form-image.jpg);
     background-size: cover;
     background-repeat: no-repeat;
     width: 1200px;

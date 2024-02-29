@@ -22,4 +22,5 @@
 
         </style>
 
+        <!-- Page Container contains the entire webpage under which all other elements are kept -->
         <div id="page-container">

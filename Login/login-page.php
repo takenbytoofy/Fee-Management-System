@@ -3,28 +3,6 @@
     include("../Layouts/header.php");
 ?>
 
-<div id="login-page-container">
-    
-    <div id="login-section">        
-
-        <form action="./dashboard.html" method="post">
-
-            <input class="login-content" type="text" name="" placeholder="User Name" required><br>
-
-            <input class="login-content" type="password" name="" placeholder="User Password" required><br>
-
-            <select class="login-content">
-                <option value="student"> Student </option>
-                <option value="admin"> Admin </option>
-            </select><br>
-            <button id="login-button" type="submit"> Login </button>
-
-        </form>
-
-    </div>
-          
-</div>
-
 <style>
     #login-page-container {
         background-image: url(form_image.jpg);
@@ -77,6 +55,28 @@
     }
 
 </style>
+
+<div id="login-page-container">
+    
+    <div id="login-section">        
+
+        <form action="./dashboard.html" method="post">
+
+            <input class="login-content" type="text" name="" placeholder="User Name" required><br>
+
+            <input class="login-content" type="password" name="" placeholder="User Password" required><br>
+
+            <select class="login-content" name="user-type">
+                <option value="student"> Student </option>
+                <option value="admin"> Admin </option>
+            </select><br>
+            <button id="login-button" type="submit"> Login </button>
+
+        </form>
+
+    </div>
+          
+</div>
 
 <?php
     include("../Layouts/footer.php");

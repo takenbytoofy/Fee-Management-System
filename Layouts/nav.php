@@ -1,69 +1,15 @@
-
-<div id="student-dashboard">
-    <div id = "student-nav-container">
-        <nav>
-
-            <span id="student-name" > Student Name </span> 
-
-            <hr id="seperator"> 
-
-            <a href="#" class="nav-bar"> 
-                <i class=" fas fa-bars"></i>
-                <span class="nav-item"> Dashboard </span>
-            </a><br>
-            
-            <a href="#" class="nav-bar">
-                <i class=" fas fa-solid fa-user"></i>
-                <span class="nav-item"> Student Detail </span>
-            </a><br>
-
-            <a href="#" class="nav-bar">
-                <i class=" fas fa-dollar-sign"></i>
-                <span class="nav-item"> Fee Structure </span>
-            </a><br>
-
-            <a href="#" class="nav-bar">
-                <i class="fas fa-file"></i>
-                <span class="nav-item"> Payment Record </span>
-            </a><br>
-
-            <a href="#" class="nav-bar">
-                <i class="fas fa-file-invoice"></i>
-                <span class="nav-item"> Fee Dues </span>
-            </a><br>
-
-            <a href="#" class="nav-bar">
-                <i class="fas fa-receipt"></i>
-                <span class="nav-item"> Upload Receipt </span>
-            </a><br>
-
-            <a href="#" class="nav-bar">
-                <i class="fas fa-sign-out-alt"></i>
-                <span class="nav-item"> Logout </span>
-            </a><br>
-
-        </nav>
-    </div>
-
-    <div id="student-page-title">
-        <?php echo $studentPageTitle?>
-    </div>
-
 <style>
     
-    *{
-        margin:0;
-        padding: 0;
-        outline: none;
-        border: none;
-        text-decoration: none;
-        box-sizing: border-box;
-        font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    }
-
-    
-    #student-dashboard{
-        background-color: rgb(236, 232, 232);
+    #naved-page {
+        display: grid;
+        row-gap: 0;
+        column-gap: 0;
+        /* Defining the Grid Display */
+        grid-template-areas: 
+        'nav page-title'
+        'nav page-content';
+        grid-template-columns: 300px auto;
+        grid-template-rows: 50px auto;
     }
 
     #student-nav-container{
@@ -71,18 +17,21 @@
         height: 100vh;
         float: left;
         width: 300px;
+        grid-area: nav;
     }
 
     #student-page-title{
         background-color: #7a7edb;
+        height: 50px;
         font-size: 25px;
         display: flex;
         justify-content: center;
         align-items: center;
         color: white;
-        border-style: solid;
+        /* border-style: solid;
         border-width: 3px;
-        border-color: white;
+        border-color: white; */
+        grid-area: page-title;
     }
 
     #student-name{
@@ -149,3 +98,54 @@
     }
 
 </style>
+    
+<div id="naved-page">   
+    <div id = "student-nav-container">
+        <nav>
+
+            <span id="student-name" > Student Name </span> 
+
+            <hr id="seperator"> 
+
+            <a href="#" class="nav-bar"> 
+                <i class=" fas fa-bars"></i>
+                <span class="nav-item"> Dashboard </span>
+            </a><br>
+            
+            <a href="#" class="nav-bar">
+                <i class=" fas fa-solid fa-user"></i>
+                <span class="nav-item"> Student Detail </span>
+            </a><br>
+
+            <a href="#" class="nav-bar">
+                <i class=" fas fa-dollar-sign"></i>
+                <span class="nav-item"> Fee Structure </span>
+            </a><br>
+
+            <a href="#" class="nav-bar">
+                <i class="fas fa-file"></i>
+                <span class="nav-item"> Payment Record </span>
+            </a><br>
+
+            <a href="#" class="nav-bar">
+                <i class="fas fa-file-invoice"></i>
+                <span class="nav-item"> Fee Dues </span>
+            </a><br>
+
+            <a href="#" class="nav-bar">
+                <i class="fas fa-receipt"></i>
+                <span class="nav-item"> Upload Receipt </span>
+            </a><br>
+
+            <a href="#" class="nav-bar">
+                <i class="fas fa-sign-out-alt"></i>
+                <span class="nav-item"> Logout </span>
+            </a><br>
+
+        </nav>
+    </div>
+
+    <div id="student-page-title">
+        <?php echo $studentPageTitle?>
+    </div>
+

@@ -72,7 +72,7 @@
     <div id="index-page-content-box">
 
         <span id="index-page-content-box-title"> Fee Management System </span>
-        <span id="login-button-container"><a id="login-button" href= './Login/login-page.php'>Login</a></span>
+        <span id="login-button-container"><button id="login-button" onclick= window.open(url(./Login/login-page.php>Login</button></span>
 
     </div>
 

@@ -5,38 +5,44 @@
 
 <style>
     #login-page-container {
-        background-image: url(form_image.jpg);
+        background-image: url(main-image.png);
         background-size: cover;
         background-repeat: no-repeat;
         width: 100%;
         height: 100vh;
-    }
-
-    #login-title{
-        font-size: 20px;
-        padding: 0;
-        margin: 0;
-        background-color: #F3C0AA;
+        display: flex;
+        justify-content: center;
+        align-items:center;
     }
 
     #login-section{
-        background-color: #D1DBFD;
+        background-color: rgba(209, 219, 253, 60%);
         position: relative;
         display: flex;
         justify-content: center;
         align-items: center;
-        height:100vh ;
+        height:500px ;
         width: 600px;
         float: left;
     }
 
-    .login-content{
+    #login-title{
+        font-size: 20px;
+        padding: 0; 
+        margin: 0;
+        background-color: #F3C0AA;
+    }
+
+
+    .login-input{
         margin: 20px;
         font-size: 20px;
         text-align: center;
         align-items: center;
         width: 450px;
         height: 40px;
+        border-radius: 5px 5px 5px 5px;
+        border-width: 2px;
     }
 
     #login-button{
@@ -62,14 +68,15 @@
 
         <form action="./dashboard.html" method="post">
 
-            <input class="login-content" type="text" name="" placeholder="User Name" required><br>
+            <input class="login-input" type="text" name="login-id" placeholder="User ID" required><br>
 
-            <input class="login-content" type="password" name="" placeholder="User Password" required><br>
+            <input class="login-input" type="password" name="login-pswd" placeholder="Password" required><br>
 
-            <select class="login-content" name="user-type">
+            <select class="login-input" name="user-type">
                 <option value="student"> Student </option>
                 <option value="admin"> Admin </option>
             </select><br>
+
             <button id="login-button" type="submit"> Login </button>
 
         </form>

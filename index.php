@@ -8,47 +8,58 @@
     
     #index-page-container {
         margin: 0px 0px 0px 0px;
-        height: 100%;
-        width: 100%;
-        background-color: #f0f0f0;
+        height: 100vh;
+        width: 100vw;
+        background-image: url("./Login/main-image.png");
+        background-size: cover;
+        background-repeat: no-repeat;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 
-    #index-page-nav-bar {
+    #index-page-content-box {
         margin: 0px 0px 0px 0px;
-        height: 50px;
+        height: 500px;
+        width: 800px;
+        background-color: rgba(209, 219, 253, 60%);
+        border-radius: 24px;
+        /* Setting Display */
+        display: grid;
+        grid-template-columns: auto;
+        grid-template-rows: auto auto;
+    }
+
+    #index-page-content-box-title {
         width: 100%;
-        background-color: #0e36ad;
-    }
-
-    #index-page-nav-header {
+        height: 100%;
+        /* Aligning to Center */
         display: flex;
-        float: left;
         justify-content: center;
         align-items: center;
-        width: 60%;
-        height: 50px;
-        color: white;
-        font-size: 32px;
+        /* Others */
+        color: black;
+        font-size: 56px;
     }
 
-    #index-page-login-button {
+    #login-button-container {
+        /* Aligning to Center */
         display: flex;
-        float: right;
         justify-content: center;
         align-items: center;
-
-        width: 100px;
-        height: 50px;
-
-        border: none;
-
-        color: white;
-        font-size: 24px;
-        background-color: #2a4bad;
+        /* Others */
+        width: 100%;
+        height: 100%;
+        color: black;
+        font-size: 28px;
     }
 
-    #index-page-login-button:hover {
-        background-color: #1d357a;
+    #login-button {
+        
+    }
+
+    #login-button:hover {
+        
     }
 
 </style>
@@ -58,10 +69,10 @@
 <div id="index-page-container">
     
     <!-- Making an Initial Navigation bar -->
-    <div id="index-page-nav-bar">
+    <div id="index-page-content-box">
 
-        <span id="index-page-nav-header"> Fee Management System </span>
-        <button id="index-page-login-button" onclick="window.open('./Login/login-page.php','_self')">Login</button>
+        <span id="index-page-content-box-title"> Fee Management System </span>
+        <span id="login-button-container"><a id="login-button" href= './Login/login-page.php'>Login</a></span>
 
     </div>
 

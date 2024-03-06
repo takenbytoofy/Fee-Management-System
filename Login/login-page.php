@@ -35,7 +35,7 @@
         justify-content: left;
         align-items: center;
         /* Others */
-        color: White;
+        color: rgb(30, 2, 54);
         font-size: 56px;
         font-weight: 500;
     }
@@ -44,6 +44,7 @@
         margin-bottom: 20px;
         padding-left: 10px;
 
+        color: rgb(30, 2, 54);
         font-size: 18px;
         text-align: left;
         background-color: rgba(250, 250, 250, 80%);
@@ -65,16 +66,16 @@
         width: 100px;
         /* Font Style */
         font-size: 18px;
-        color: black;
+        color: white;
         /* Background and Border */
         border-radius: 36px;
         border: none;
-        background-color: rgba(255, 255, 255, 100%);
+        background-color: rgba(30, 2, 54, 100%);
     } 
 
     #login-button:hover{
         transition-duration: 300ms;
-        background-color: rgba(255, 255, 255, 0.5);
+        background-color: rgba(30, 2, 54, 50%);
     }
 
     #login-button:active {
@@ -98,7 +99,8 @@
         display: flex;
         justify-content: right;
         align-items: center;
-        color: white;
+        color: rgb(30, 2, 54);
+        font-weight: bold;
     }
 
     .login-nav-item {
@@ -124,12 +126,6 @@
 
     @media only screen and (max-width: 1030px) {
         #login-page-right-box {
-            grid-template-columns: 500px;
-        }
-    }
-
-    @media only screen and (max-width: 930px) {
-        #login-page-right-box {
             display: none;
         }
 
@@ -142,7 +138,7 @@
             background-image: url("./form-image.png");
             background-position: center;
             background-repeat: no-repeat;
-            
+            background-size: contain;
             /* Setting display to create two columns */
             display: grid;
             grid-template-columns: auto;
@@ -158,7 +154,7 @@
             justify-content: center;
             align-items: center;
             /* Others */
-            color: White;
+            color: rgb(30, 2, 54);
             font-size: 56px;
             font-weight: 500;
         }

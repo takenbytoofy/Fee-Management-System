@@ -36,7 +36,7 @@
         justify-content: left;
         align-items: center;
         /* Others */
-        color: White;
+        color: rgb(30, 2, 54);
         font-size: 56px;
         font-weight: 500;
     }
@@ -48,7 +48,7 @@
         justify-content: left;
         align-items: center;
         /* Others */
-        color: white;
+        color: rgb(30, 2, 54);
         font-size: 32px;
     }
 
@@ -69,16 +69,16 @@
         width: 140px;
         /* Font Style */
         font-size: 20px;
-        color: black;
+        color: white;
         /* Background and Border */
         border-radius: 36px;
         border: none;
-        background-color: rgba(255, 255, 255, 100%);
+        background-color: rgba(30, 2, 54, 100%);
     }
 
     #login-button:hover {
         transition-duration: 300ms;
-        background-color: rgba(255, 255, 255, 0.5);
+        background-color: rgba(30, 2, 54, 50%);
     }
 
     #login-button:active {
@@ -102,7 +102,8 @@
         display: flex;
         justify-content: right;
         align-items: center;
-        color: white;
+        color: rgb(30, 2, 54);
+        font-weight: bold;
     }
 
     .index-nav-item {
@@ -111,7 +112,7 @@
 
     .index-nav-item:hover {
         transition-duration: 300ms;
-        color: black;
+        color: white;
     }
 
     #index-page-right-box-bottom {
@@ -120,35 +121,43 @@
         align-items: center;
     }
 
-    @media only screen and (max-width: 1050px) {
+    @media only screen and (max-width: 1120px) {
         #index-page-right-box {
             grid-template-columns: 600px;
         }
     }
 
-    @media only screen and (max-width: 990px) {
+    @media only screen and (max-width: 1030px) {
         #index-page-container {
             margin: 0px 0px 0px 0px;
-            height: 100vh;
-            width: 100vw;
+            height: 100%;
+            width: 100%;
             /* Setting background colour*/
             background-color: rgba(118, 76, 245, 80%);
+            background-image: url("./Login/form-image.png");
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: contain;
             /* Setting display to create two columns */
             display: grid;
-            grid-template-areas: 'content';
+            grid-template-columns: auto;
+            grid-template-rows: auto;
+            justify-content: center;
             align-items: center;
         }
 
         #index-page-left-box {
-            grid-area: content;
             margin: 0px 0px 0px 0px;
             width: 100%;
-            grid-area: content;
             /* Setting Display */
             padding-left: 2vw;
             display: grid;
             grid-template-columns: auto;
             grid-template-rows: auto 50px auto;
+
+            justify-content: center;
+            align-items: center;
+            /* Others */
         }
 
         #index-page-right-box{

@@ -6,7 +6,7 @@
     $dbName = '';
 
     try {
-        $dbConn = mysqli_connect($dbHost, $dbUser, $dbPass, $dbName);
+        $dbConn = new mysqli($dbHost, $dbUser, $dbPass, $dbName);
     } catch (exception) {
         die("Database connection failed");
     }

@@ -170,7 +170,7 @@
         
         <span id="login-page-left-box-title">FMS Sign In</span>
 
-        <form id="login-form" action="./dashboard.html" method="post">
+        <form id="login-form" action="../FunctionFiles/login-validate.php" method="post">
 
             <input class="login-input" type="text" name="login-id" placeholder="User ID" required autofocus><br>
 

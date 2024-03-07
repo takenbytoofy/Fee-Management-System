@@ -1,8 +1,10 @@
 <?php
-    $studentPageTitle = "Student Details";
-    $pageTitle = "Student Details";
+
+    $studentPageHeader = "Student Details";
+    $pageTitle = "FMS - My Details";
     include("../Layouts/header.php");
-    include("../Layouts/nav.php");
+    include("../Layouts/nav-student.php");
+
 ?>
 
 <style>

@@ -8,15 +8,16 @@
         grid-template-areas: 
         'nav page-title'
         'nav page-content';
-        grid-template-columns: 300px auto;
+        grid-template-columns: 270px auto;
         grid-template-rows: 50px auto;
     }
 
     #student-nav-container{
+        position: fixed;
         display: flex;
         height: 100vh;
         float: left;
-        width: 300px;
+        width: 270px;
         grid-area: nav;
     }
 
@@ -28,10 +29,11 @@
         justify-content: center;
         align-items: center;
         color: white;
-        /* border-style: solid;
-        border-width: 3px;
-        border-color: white; */
         grid-area: page-title;
+    }
+
+    #student-page-content-container {
+        grid-area: page-content;
     }
 
     #student-name{
@@ -42,10 +44,11 @@
         background-color: white;
         border-radius: 15px;
         height: 50px;
+        width: 250px;
         font-size: 18px;
     }
 
-    #seperator{
+    #separator{
         width: 280px;
         background-color: #4D52D3;
         height: 2px;
@@ -66,26 +69,24 @@
     }
 
     nav .fas{
-        width: 70px;
+        width: 40px;
         height: 50px;
+        margin-right: none;
         font-size: 20px;
         display: flex;
-        align-items: center;    
+        align-items: center;   
     }
 
-    .nav-item{
+    .nav-bar-text{
         font-size: 20px;
         height: 50px;
         display: flex;
         align-items: center;
     }
 
-    .nav-bar:hover{
-        background: rgb(149, 164, 235);
-    }
-
     .nav-bar{
         border-radius: 15px;
+        border: none;
         background-color: white; 
         padding-left: 20px;
         height: 50px;
@@ -94,58 +95,64 @@
         float: left;
         color: rgb(76, 74, 74);
         font-size: 14px;
-        width: 280px;
+        width: 250px;
+    }
+
+    .nav-bar:hover{
+        background: rgb(149, 164, 235);
     }
 
 </style>
     
 <div id="naved-page">   
+
     <div id = "student-nav-container">
         <nav>
 
             <span id="student-name" > Student Name </span> 
 
-            <hr id="seperator"> 
+            <hr id="separator"> 
 
-            <a href="#" class="nav-bar"> 
+            <button class="nav-bar" onclick="window.open('./dashboard-student.php','_self')"> 
                 <i class=" fas fa-bars"></i>
-                <span class="nav-item"> Dashboard </span>
-            </a><br>
+                <span class="nav-bar-text"> Dashboard </span>
+            </button><br>
             
-            <a href="#" class="nav-bar">
+            <button class="nav-bar" onclick="window.open('./student-details.php','_self')">
                 <i class=" fas fa-solid fa-user"></i>
-                <span class="nav-item"> Student Detail </span>
+                <span class="nav-bar-text"> My Details </span>
             </a><br>
 
-            <a href="#" class="nav-bar">
+            <button class="nav-bar" onclick="">
                 <i class=" fas fa-dollar-sign"></i>
-                <span class="nav-item"> Fee Structure </span>
+                <span class="nav-bar-text"> Fee Structure </span>
             </a><br>
 
-            <a href="#" class="nav-bar">
+            <button class="nav-bar" onclick="">
                 <i class="fas fa-file"></i>
-                <span class="nav-item"> Payment Record </span>
+                <span class="nav-bar-text"> Payment Record </span>
             </a><br>
 
-            <a href="#" class="nav-bar">
+            <button class="nav-bar" onclick="">
                 <i class="fas fa-file-invoice"></i>
-                <span class="nav-item"> Fee Dues </span>
+                <span class="nav-bar-text"> Fee Dues </span>
             </a><br>
 
-            <a href="#" class="nav-bar">
+            <button class="nav-bar" onclick="">
                 <i class="fas fa-receipt"></i>
-                <span class="nav-item"> Upload Receipt </span>
+                <span class="nav-bar-text"> Upload Receipt </span>
             </a><br>
 
-            <a href="#" class="nav-bar">
+            <button class="nav-bar" onclick="window.open('../Login/login-page.php','_self')">
                 <i class="fas fa-sign-out-alt"></i>
-                <span class="nav-item"> Logout </span>
+                <span class="nav-bar-text"> Logout </span>
             </a><br>
 
         </nav>
     </div>
 
     <div id="student-page-title">
-        <?php echo $studentPageTitle?>
+        <?php echo $studentPageHeader?>
     </div>
 
+    <div id="student-page-content-container">

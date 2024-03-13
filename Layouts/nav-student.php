@@ -123,7 +123,7 @@
                 <span class="nav-bar-text"> My Details </span>
             </a><br>
 
-            <button class="nav-bar" onclick="">
+            <button class="nav-bar" onclick="window.open('./student-fee-structure.php','_self')">
                 <i class=" fas fa-dollar-sign"></i>
                 <span class="nav-bar-text"> Fee Structure </span>
             </a><br>

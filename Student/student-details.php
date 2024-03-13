@@ -9,17 +9,6 @@
 
 <style>
 
-    *{
-        margin:0;
-        padding: 0;
-        outline: none;
-        border: none;
-        text-decoration: none;
-        box-sizing: border-box;
-        font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-
-    }
-
     #student-detail{
         background-color: #D1DBFD;
         display: inline-block;
@@ -39,18 +28,23 @@
 
 </style>
 
-<div id="student-detail">
-    <p class="detail-content"> Student Id: </p>
-    <p class="detail-content"> Enrolled Program ID: </p>
-    <p class="detail-content"> Student Name: </p>
-    <p class="detail-content"> Gender: </p>
-    <p class="detail-content"> Email: </p>
-    <p class="detail-content"> Phone Number: </p>
-    <p class="detail-content"> Address: </p>
+<div id="student-details-container">
+
+    <div id="student-detail">
+        <p class="detail-content"> Student Id: </p>
+        <p class="detail-content"> Enrolled Program ID: </p>
+        <p class="detail-content"> Student Name: </p>
+        <p class="detail-content"> Gender: </p>
+        <p class="detail-content"> Email: </p>
+        <p class="detail-content"> Phone Number: </p>
+        <p class="detail-content"> Address: </p>
+    </div>
+
 </div>
 
 <?php
 
+    include("../Layouts/student-page-footer.php");
     include("../Layouts/footer.php");
 
 ?>

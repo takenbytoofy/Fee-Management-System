@@ -143,7 +143,7 @@
                 <span class="nav-bar-text"> Upload Receipt </span>
             </a><br>
 
-            <button class="nav-bar" onclick="window.open('../Login/login-page.php','_self')">
+            <button class="nav-bar" onclick="window.open('../FunctionFiles/logout-function.php','_self')">
                 <i class="fas fa-sign-out-alt"></i>
                 <span class="nav-bar-text"> Logout </span>
             </a><br>

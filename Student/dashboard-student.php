@@ -56,7 +56,6 @@
 
 <?php
 
-    include("../Layouts/student-page-footer.php");
     include("../Layouts/footer.php");
 
 ?>

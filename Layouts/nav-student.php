@@ -49,7 +49,7 @@
     }
 
     #separator{
-        width: 280px;
+        width: 250px;
         background-color: #4D52D3;
         height: 2px;
         margin-left: 10px;
@@ -138,7 +138,7 @@
                 <span class="nav-bar-text"> Fee Dues </span>
             </a><br>
 
-            <button class="nav-bar" onclick="">
+            <button class="nav-bar" onclick="window.open('./student-upload-receipt.php','_self')">
                 <i class="fas fa-receipt"></i>
                 <span class="nav-bar-text"> Upload Receipt </span>
             </a><br>

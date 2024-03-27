@@ -162,7 +162,22 @@
 
 </style>
 
-</style>
+<script>
+
+    function validateFormInput () {
+        var userId = document.forms["login-form"]["login-id"].value;
+        var userPswd = document.forms["login-form"]["login-pswd"].value;
+        var userType = document.forms["login-form"]["user-type"].value;
+
+        if (userId == "" || userPswd == "" || userType == "") {
+            alert("All fields required");
+            return false;
+        } else {
+            return true;
+        }
+    }
+
+</script>
 
 <div id="login-page-container">
     
@@ -170,11 +185,11 @@
         
         <span id="login-page-left-box-title">FMS Sign In</span>
 
-        <form id="login-form" action="../FunctionFiles/login-validate.php" method="post">
+        <form id="login-form" action="../FunctionFiles/login-validate.php" method="post" onsubmit="return validateFormInput()">
 
-            <input class="login-input" type="text" name="login-id" placeholder="User ID" required autofocus><br>
+            <input class="login-input" type="text" name="login-id" placeholder="User ID" autofocus><br>
 
-            <input class="login-input" type="password" name="login-pswd" placeholder="Password" required><br>
+            <input class="login-input" type="password" name="login-pswd" placeholder="Password"><br>
 
             <select id="login-input-select" class="login-input" name="user-type">
                 <option value="student"> Student </option>

@@ -1,7 +1,7 @@
 <?php
 
-    $studentPageHeader = "Student Details";
-    $pageTitle = "FMS - My Details";
+    $studentPageHeader = "Fee Structure";
+    $pageTitle = "FMS - Fee Structure";
     include("../Layouts/header.php");
     include("../Layouts/nav-student.php");
 
@@ -48,6 +48,12 @@
 </style>
 
 <div id="student-fee-structure-container">
+
+    <div id="my-fee-structure">
+    
+    
+
+    </div>
 
     <div class="button-selection">
             <p id="section-title"> Select Program

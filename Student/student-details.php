@@ -1,7 +1,9 @@
 <?php
 
-    $studentPageHeader = "Student Details";
-    $pageTitle = "FMS - My Details";
+    $pageHeader = "My Profile";
+    $pageTitle="My Profile";
+
+    require("../FunctionFiles/validate-session.php");
     include("../Layouts/header.php");
     include("../Layouts/nav-student.php");
 
@@ -9,35 +11,32 @@
 
 <style>
 
-    #student-detail{
-        background-color: #D1DBFD;
-        display: inline-block;
-        grid-area: page-content;
-        margin: 40px 100px;
-        width: 950px;
-        height: 60vh;
-        border-style: solid;
-        border-color: #7a7edb;
-        border-width: 2px ;
+    .details-container {
+        width:100px;
     }
 
-    .detail-content{
+    .student-detail {
+        background-color: white;
+    }
+
+    .student-detail p{
         margin: 20px;
         padding: 2px;
+        width: 200px;
     }
 
 </style>
 
-<div id="student-details-container">
+<div class="details-container">
 
-    <div id="student-detail">
-        <p class="detail-content"> Student Id: </p>
-        <p class="detail-content"> Enrolled Program ID: </p>
-        <p class="detail-content"> Student Name: </p>
-        <p class="detail-content"> Gender: </p>
-        <p class="detail-content"> Email: </p>
-        <p class="detail-content"> Phone Number: </p>
-        <p class="detail-content"> Address: </p>
+    <div class="student-detail">
+        <p> Student Id: </p>
+        <p> Enrolled Program ID: </p>
+        <p> Student Name: </p>
+        <p> Gender: </p>
+        <p> Email: </p>
+        <p> Phone Number: </p>
+        <p> Address: </p>
     </div>
 
 </div>

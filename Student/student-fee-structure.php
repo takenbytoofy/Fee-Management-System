@@ -1,7 +1,9 @@
 <?php
 
-    $studentPageHeader = "Fee Structure";
-    $pageTitle = "FMS - Fee Structure";
+    $pageHeader = "Student Fees";
+    $pageTitle="Student Fees";
+
+    require("../FunctionFiles/validate-session.php");
     include("../Layouts/header.php");
     include("../Layouts/nav-student.php");
 

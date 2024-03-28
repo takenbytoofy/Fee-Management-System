@@ -1,55 +1,72 @@
 <?php
 
-    $studentPageHeader = "My Dashboard";
-    $pageTitle = "FMS - My Dashboard";
+    $pageHeader = "Dashboard";
+    $pageTitle = "Student Dashboard";
+
+    require("../FunctionFiles/validate-session.php");
     include("../Layouts/header.php");
     include("../Layouts/nav-student.php");
 
 ?>
-<style>
-    #dashboard-container {
-        height: 100%;
-        width: 100%;
-        display: grid;
-        grid-template-columns: 100%;
-        grid-template-rows: auto auto;
+
+<!-- <style>
+
+    .dashboard-container {
+        margin: 0.2rem 0.2rem;
+    }
+
+    .dashboard-tiles {
+        display: flex;
+        align-items: space-around;
+    }
+
+    .dashboard-tiles a{
+        margin: 0.2rem 1rem;
+        display: flex;
+        flex-direction: column;
+        border-radius: 25%;
+        height: 16rem;
+        width: 14rem;
+        background-color: #ffffff;
+        box-shadow: 0 0.5rem 0.8rem rgba(56, 35, 92, 20%);
+        align-items: center;
         justify-content: center;
-        align-items: center;    
+        text-decoration: none;
+        transition: none;
     }
-
-    .dashboard-option{
-        background-color: rgb(252, 225, 190);
-        margin: 30px 250px;
-        padding: 60px;
-        width: 500px;
-        height: 200px;
-        text-align: center;
-        font-size: 20px;
-        font-weight: bold;
-        border-radius: 20px;
-        border-style: solid;
-        border-color: white;
-        border-width: 5px;
-        line-height: 2;
-    }
-
-
 
 </style>
 
-<div id="dashboard-container">
+<div class="dashboard-container">
     
-    <div class="dashboard-option">
-        Upcoming Fee Payment <i class=" fas fa-bell">
+    <div class="dashboard-tiles">
+        <a href="#">
+            <i class="fas fa-bell"></i>  
+            <h3>Upcoming Fee</h3> 
+            <br>
+            Date
+        </a>
 
-        </i> <br>
-        Date:
-    </div>
+        <a href="#">
+            <i class="fas fa-file-invoice"></i>
+            <h3>Total Payments Made</h3>
+            <br>
+            Rs
+        </a>
 
-    <div class="dashboard-option">
-        Total Payments Made <i class=" fas fa-file-invoice">
-        </i> <br>
-        Rs: 200000
+        <a href="#">
+            <i class="fas fa-file-invoice"></i>
+            <h3>Fees Due</h3>
+            <br>
+            Rs
+        </a>
+
+        <a href="#">
+            <i class="fas fa-file-invoice"></i>
+            <h3>Remaining Fees</h3>
+            <br>
+            Rs
+        </a>
     </div>
 
 </div>
@@ -58,4 +75,4 @@
 
     include("../Layouts/footer.php");
 
-?>
+?> -->

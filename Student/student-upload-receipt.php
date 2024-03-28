@@ -1,8 +1,9 @@
 <?php
 
-    $studentPageHeader = "Upload Receipt";
-    $pageTitle="FMS - Upload Receipt";
+    $pageHeader = "Upload Fee Receipt";
+    $pageTitle="Student Fees";
 
+    require("../FunctionFiles/validate-session.php");
     include("../Layouts/header.php");
     include("../Layouts/nav-student.php");
 

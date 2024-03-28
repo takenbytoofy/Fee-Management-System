@@ -10,7 +10,7 @@
         height: 100vh;
         width: 100vw;
         /* Setting background colour*/
-        background-color: rgba(118, 76, 245, 80%);
+        background-color: #7a7edb;
         /* Setting display to create two columns */
         display: grid;
         grid-template-columns: auto auto;

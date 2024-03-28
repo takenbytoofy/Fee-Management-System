@@ -11,7 +11,7 @@
         height: 100vh;
         width: 100vw;
         /* Setting background colour*/
-        background-color: rgba(118, 76, 245, 80%);
+        background-color: #7a7edb;
         /* Setting display to create two columns */
         display: grid;
         grid-template-columns: auto auto;
@@ -65,13 +65,12 @@
 
     #login-button {
         height: 40px;
-        border-radius: 16px;
+        border-radius: 36px;
         width: 140px;
         /* Font Style */
         font-size: 20px;
         color: white;
         /* Background and Border */
-        border-radius: 36px;
         border: none;
         background-color: rgba(30, 2, 54, 100%);
     }

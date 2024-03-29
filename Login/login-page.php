@@ -9,49 +9,40 @@
         margin: 0px 0px 0px 0px;
         height: 100vh;
         width: 100vw;
-        /* Setting background colour*/
-        background-color: #7a7edb;
-        /* Setting display to create two columns */
-        display: grid;
-        grid-template-columns: auto auto;
-        grid-template-rows: 100vh;
-        align-items: center;
+        display: flex;
     }
 
     #login-page-left-box{
-        margin: 0px 0px 0px 0px;
-        height: 400px;
-        /* Setting Display */
-        padding-left: 2vw;
-        display: grid;
-        grid-template-columns: auto;
-        grid-template-rows: auto auto;
+        float: left;
+        padding: 0rem 2rem;
+        height: 100vh;
+        width: 50%;
+        background-color: #7a7edb;
+        display: flex;
+        flex-direction: column;
+        align-items: left;
+        justify-content: center;
+        gap: 30px;
     }
 
     #login-page-left-box-title {
-        height: 100%;
-        /* Aligning*/
         display: flex;
         justify-content: left;
         align-items: center;
-        /* Others */
         color: rgb(30, 2, 54);
         font-size: 56px;
-        font-weight: 500;
+        font-weight: 1000;
     }
 
     .login-input{
         margin-bottom: 20px;
         padding-left: 10px;
-
         color: rgb(30, 2, 54);
         font-size: 18px;
         text-align: left;
         background-color: rgba(250, 250, 250, 80%);
-
         width: 400px;
         height: 40px;
-
         border-radius: 16px;
         border: none;
     }
@@ -64,10 +55,8 @@
     #login-button{
         height: 32px;
         width: 100px;
-        /* Font Style */
         font-size: 18px;
         color: white;
-        /* Background and Border */
         border-radius: 36px;
         border: none;
         background-color: rgba(30, 2, 54, 100%);
@@ -84,81 +73,75 @@
     }
 
     #login-page-right-box {
+        float: right;
+        background-color: rgba(122, 126, 219, 10%);
+        background-image: url("./form-image.png");
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: contain;
         margin: 0px 0px 0px 0px;
         height: 100vh;
-        width: 100%;
-        /* Setting Display */
+        width: 50%;
         display: grid;
         grid-template-columns: auto;
         grid-template-rows: 50px auto;
     }
 
-    #login-page-right-box-top {
-        padding-top: 2vw;
-        padding-right: 2vw;
+    #login-page-right-nav {
         display: flex;
-        justify-content: right;
-        align-items: center;
+        padding: 1rem 0rem;
+        flex-direction: row-reverse;
         color: rgb(30, 2, 54);
         font-weight: bold;
     }
 
     .login-nav-item {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-decoration: none;
+        padding: 1rem 1rem;
         margin-right: 2vw;
+        border-radius: 24px;
     }
 
     .login-nav-item:hover {
         transition-duration: 300ms;
-        color: black;
-    }
-
-    #login-page-right-box-bottom {
-        display: flex;
-        justify-content: right;
-        align-items: center;
+        color: white;
+        background-color: #7a7edb;
     }
 
     @media only screen and (max-width: 1120px) {
-        #login-page-right-box {
-            grid-template-columns: 600px;
-        }
-    }
-
-    @media only screen and (max-width: 1030px) {
-        #login-page-right-box {
-            display: none;
-        }
 
         #login-page-container {
-            margin: 0px 0px 0px 0px;
-            height: 100vh;
-            width: 100vw;
-            /* Setting background colour*/
-            background-color: rgba(118, 76, 245, 80%);
+            align-items: center;
+            justify-content: center;
+            background-color: rgba(122, 126, 219, 10%);
             background-image: url("./form-image.png");
             background-position: center;
             background-repeat: no-repeat;
             background-size: contain;
-            /* Setting display to create two columns */
-            display: grid;
-            grid-template-columns: auto;
-            grid-template-rows: 100vh;
-            justify-content: center;
-            align-items: center;
         }
 
-        #login-page-left-box-title {
-            height: 100%;
-            /* Aligning*/
+        #login-page-left-box {
+            all: unset;
+            border-radius: 36px;
+            padding: 2rem 2rem;
+            height: auto;
+            width: auto;
+            background-color: rgba(122, 126, 219, 70%);
             display: flex;
-            justify-content: center;
+            flex-direction: column;
             align-items: center;
-            /* Others */
-            color: rgb(30, 2, 54);
-            font-size: 56px;
-            font-weight: 500;
+            justify-content: center;
+            gap: 30px;
+        }
+
+        #login-page-right-box {
+            display: none;
         }
     }
+
 
 </style>
 
@@ -183,7 +166,7 @@
     
     <div id="login-page-left-box"> 
         
-        <span id="login-page-left-box-title">FMS Sign In</span>
+        <span id="login-page-left-box-title">KU Fee Portal Sign In</span>
 
         <form id="login-form" action="../FunctionFiles/login-validate.php" method="post" onsubmit="return validateFormInput()">
 
@@ -196,7 +179,7 @@
                 <option value="admin"> Admin </option>
             </select><br>
 
-            <button id="login-button" type="submit"> Login </button>
+            <button id="login-button" type="submit"> Sign In </button>
 
         </form>
 
@@ -205,16 +188,12 @@
     
     <div id="login-page-right-box">
         
-        <div id="login-page-right-box-top">
-            <span class="login-nav-item">BBIS</span>
+        <div id="login-page-right-nav">
+            <a class="login-nav-item" href="https://mic.ku.edu.np/bachelor-of-business-information-systems-bbis"><span >BBIS</span></a>
             
-            <span class="login-nav-item">Kathmandu Unviersity</span>
+            <a class="login-nav-item" href="https://www.ku.edu.np/"><span>Kathmandu Unviersity</span></a>
 
-            <span class="login-nav-item">About Us</span>
-        </div>
-        
-        <div id="login-page-right-box-bottom">
-            <img id="main-image" src="./form-image.png">
+            <a class="login-nav-item" href="../Profile/TeamProfile.php"><span>About Us</span></a>
         </div>
 
 </div>

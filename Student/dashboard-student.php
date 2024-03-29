@@ -9,7 +9,7 @@
 
 ?>
 
-<!-- <style>
+<style>
 
     .dashboard-container {
         margin: 0.2rem 0.2rem;
@@ -75,4 +75,4 @@
 
     include("../Layouts/footer.php");
 
-?> -->
+?>

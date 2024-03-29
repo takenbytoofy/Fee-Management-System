@@ -5,12 +5,6 @@
 
 <style>
 
-    * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-    }
-
     .user-img {
         width: 50px;
         border-radius: 100%;
@@ -31,7 +25,6 @@
     .sidebar.active ~ .main-content {
         left: 250px;
         width: calc(100% - 250px);
-
     }
 
     .sidebar.active {

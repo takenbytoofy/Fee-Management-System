@@ -13,9 +13,27 @@
 
     .details-container {
         width:100px;
+        padding: 2rem 2rem;
     }
 
-    .student-detail {
+    .user-title {
+        display: flex;
+        gap: 30px;
+    }
+
+    .user-title img {
+        border-radius: 50%;
+        height: 100px;
+        width: 100px;
+    }
+
+    .user-title-details p {
+        margin: 20px;
+        padding: 2px;
+        width: 200px;
+    }
+
+    /* .student-detail {
         background-color: white;
     }
 
@@ -23,13 +41,24 @@
         margin: 20px;
         padding: 2px;
         width: 200px;
-    }
+    } */
 
 </style>
 
 <div class="details-container">
 
-    <div class="student-detail">
+    <div class="user-title">
+        <img src = '../Layouts/user.png' alt='User Picture'>
+        <div class="user-title-details">
+            <p> Student Name: </p>
+            <p> Student Id: </p>
+            <p> Enrolled Program ID: </p>
+            <p> Email: </p>
+            <p> Phone Number: </p>
+        </div>
+    </div>
+
+    <!-- <div class="student-detail">
         <p> Student Id: </p>
         <p> Enrolled Program ID: </p>
         <p> Student Name: </p>
@@ -37,7 +66,7 @@
         <p> Email: </p>
         <p> Phone Number: </p>
         <p> Address: </p>
-    </div>
+    </div> -->
 
 </div>
 

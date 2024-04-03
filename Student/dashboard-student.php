@@ -17,7 +17,6 @@
 
     .dashboard-tiles {
         display: flex;
-        align-items: space-around;
     }
 
     .dashboard-tiles a{
@@ -25,8 +24,8 @@
         display: flex;
         flex-direction: column;
         border-radius: 24px;
-        height: 250px;
-        width: 250px;
+        min-height: 250px;
+        min-width: 250px;
         background-color: #ffffff;
         box-shadow: 0 0.5rem 0.8rem rgba(56, 35, 92, 20%);
         align-items: center;

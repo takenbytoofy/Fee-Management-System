@@ -157,6 +157,7 @@
         position: relative;
         background-color: rgba(122, 126, 219, 10%);
         min-height: 100vh;
+        min-width: none;
         top: 0;
         left: 80px;
         transition: all 0.5 ease;
@@ -169,6 +170,7 @@
         font-size: 36px;
         color: rgba(56, 35, 92, 100%);
         font-weight: 1000;
+        
     }
 
 </style>

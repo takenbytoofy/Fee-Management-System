@@ -91,7 +91,7 @@
         display: flex;
         padding: 1rem 0rem;
         flex-direction: row-reverse;
-        color: rgb(30, 2, 54);
+        /* color: rgb(30, 2, 54); */
         font-weight: bold;
     }
 
@@ -189,11 +189,17 @@
     <div id="login-page-right-box">
         
         <div id="login-page-right-nav">
-            <a class="login-nav-item" href="https://mic.ku.edu.np/bachelor-of-business-information-systems-bbis"><span >BBIS</span></a>
+            <a class="login-nav-item" href="https://mic.ku.edu.np/bachelor-of-business-information-systems-bbis">
+                <span >BBIS</span>
+            </a>
             
-            <a class="login-nav-item" href="https://www.ku.edu.np/"><span>Kathmandu Unviersity</span></a>
+            <a class="login-nav-item" href="https://www.ku.edu.np/">
+                <span>Kathmandu Unviersity</span>
+            </a>
 
-            <a class="login-nav-item" href="../Profile/TeamProfile.php"><span>About Us</span></a>
+            <a class="login-nav-item" href="../Profile/TeamProfile.php">
+                <span>About Us</span>
+            </a>
         </div>
 
 </div>

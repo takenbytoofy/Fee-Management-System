@@ -3,10 +3,10 @@
     $dbServer = 'localhost';
     $dbUser = 'root';
     $dbPswd = '';
-    $dbName = '';
+    $dbName = 'ku_fms_db';
 
     try {
-        $dbConn = new mysqli($dbHost, $dbUser, $dbPass, $dbName);
+        $dbConn = new mysqli($dbServer, $dbUser, $dbPswd, $dbName);
     } catch (exception) {
         die("Database connection failed");
     }

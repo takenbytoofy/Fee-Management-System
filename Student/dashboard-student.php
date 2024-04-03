@@ -24,9 +24,9 @@
         margin: 0.2rem 1rem;
         display: flex;
         flex-direction: column;
-        border-radius: 25%;
-        height: 16rem;
-        width: 14rem;
+        border-radius: 24px;
+        height: 250px;
+        width: 250px;
         background-color: #ffffff;
         box-shadow: 0 0.5rem 0.8rem rgba(56, 35, 92, 20%);
         align-items: center;

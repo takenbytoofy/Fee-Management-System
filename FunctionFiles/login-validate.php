@@ -14,7 +14,8 @@
 
         if (($loginResult->num_rows) == 1) {
 
-            $loginTimeStamp = date('Y-m-d h:i:s');
+            $_SESSION['userid'] = $userName;
+            $_SESSION['usertype'] = 'student';
 
             $loginDetails = $loginResult -> fetch_assoc();
             $studentID = $loginDetails['Std_ID'];
@@ -25,7 +26,11 @@
                         alert('New Login Detected. Change password with the link sent to your email.');
                     </script>";
 
-                
+                $token = sprintf("%06d", mt_rand(1, 999999));
+                $tokenExpire = date('Y-m-d h:i:s', strtotime('+10 minutes'));
+                $tokenQuery = "UPDATE student_login SET change_token='$token', token_expire='$tokenExpire';";
+                $dbConn -> query($tokenQuery);
+
                 $studentDetailsQuery = "SELECT Std_fname, Std_lname, Std_email FROM student WHERE Std_ID = '$studentID'";
 
                 $studentDetails = $dbConn -> query($studentDetailsQuery);
@@ -33,21 +38,17 @@
 
                 $to = $studentDetailsResult['Std_email'];
                 $subject = "Change Password - KU Fee Portal";
-                $msg = "Change your password with the given link.";
+                $msg = "Your Token is: " . $token;
 
-                
-                
                 sendMail($to, $subject, $msg);
+                header('Location: ../Login/token-form.php');
 
             } else {
                 $_SESSION['state'] = "active";
-                $_SESSION['userid'] = $userName;
-                $_SESSION['usertype'] = 'student';
-
-                 // $timeStampQuery = "UPDATE student_login SET std_last_login = '$loginTimeStamp' WHERE std_uname = '$userName';";
-            // $dbConn -> query($timeStampQuery);
-
-            // header("Location:../Student/dashboard-student.php");
+                $loginTimeStamp = date('Y-m-d h:i:s');
+                $timeStampQuery = "UPDATE student_login SET std_last_login = '$loginTimeStamp' WHERE std_uname = '$userName';";
+                $dbConn -> query($timeStampQuery);
+                header("Location:../Student/dashboard-student.php");
             }
   
            

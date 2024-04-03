@@ -1,7 +1,7 @@
 <?php
 
     session_start();
-    if(!isset($_SESSION['state'])) {
+    if(isset($_SESSION['state']) == 'active') {
         echo "<script>
             if (confirm('No login session detected. Do you want to login?') == true) {
                 window.location = '../Login/login-page.php';

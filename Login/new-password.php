@@ -1,5 +1,4 @@
 <?php
-    session_start();
 
     require("../FunctionFiles/validate-session.php");
     $pageTitle = "Change Password";
@@ -71,16 +70,26 @@
 
 <script>
 
-    function validateFormInput () {
+    function NewPassword () {
         var oldPswd = document.forms["password-change-form"]["old-pswd"].value;
         var newPswd = document.forms["password-change-form"]["new-pswd"].value;
         var newPswdRep = document.forms["password-change-form"]["new-pswd-rep"].value;
 
-        if (userId == "" || userPswd == "" || userType == "") {
+        if (oldPswd == "" || newPswd == "" || newPswdRep == "") {
             alert("All fields required");
             return false;
         } else {
-            return true;
+            if (oldPswd == newPswd) {
+                alert("Old Password and new Password Cannot be same");
+                return false;    
+            } else {
+                if (newPswd === newPswdRep) {
+                    return true;
+                } else {
+                    alert("New passwords must be same");
+                    return false;
+                }
+            }
         }
     }
 
@@ -88,13 +97,13 @@
 
 <div class="pwsd-change-form">
 
-    <form id="password-change-form" action="../FunctionFiles/change-password.php" method="post" onsubmit="return validateFormInput()">
+    <form id="password-change-form" action="../FunctionFiles/change-password.php" method="post" onsubmit="return NewPassword()">
 
         <h1> Change Password </h1>
           
         <input class="password-input" type="password" name="old-pswd" placeholder="Old Password" autofocus><br>
-        <input class="password-input" type="password" name="new-pswd" placeholder="New Password"><br>
-        <input class="password-input" type="password" name="new-pswd" placeholder="Repeat New Password"><br>
+        <input class="password-input" type="password" name="new-pswd" placeholder="New Password" minlength="8"><br>
+        <input class="password-input" type="password" name="new-pswd-rep" placeholder="Repeat New Password" minlength="8"   ><br>
 
         <button id="confirm-button" type="submit"> Change Password </button>
 

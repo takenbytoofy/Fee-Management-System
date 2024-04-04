@@ -17,7 +17,10 @@
     if ($tokenDetailsResult['change_token'] === $inputToken && $tokenDetailsResult['token_expire'] >= $currentDateTime ) {
         echo "<script> window.open('../Login/new-password.php','_self'); </script>";
     } else {
-        echo "<script> alert('Expired or Invalid Token.') </script>";
+        echo "<script> 
+            alert('Expired or Invalid Token.');
+            window.open('../Login/token-form.php','_self');
+            </script>";
     }
 
 ?>

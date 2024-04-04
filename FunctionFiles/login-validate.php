@@ -16,6 +16,7 @@
 
             $_SESSION['userid'] = $userName;
             $_SESSION['usertype'] = 'student';
+            $_SESSION['state'] = 'active';
 
             $loginDetails = $loginResult -> fetch_assoc();
             $studentID = $loginDetails['Std_ID'];

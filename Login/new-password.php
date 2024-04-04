@@ -1,6 +1,5 @@
 <?php
 
-    require("../FunctionFiles/validate-session.php");
     $pageTitle = "Change Password";
     require("../FunctionFiles/dbconnect.php");
     include("../Layouts/header.php");

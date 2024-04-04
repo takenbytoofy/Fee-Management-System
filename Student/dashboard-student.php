@@ -3,7 +3,7 @@
     $pageHeader = "Dashboard";
     $pageTitle = "Student Dashboard";
 
-    require("../FunctionFiles/validate-session.php");
+    require("../FunctionFiles/validate-student-session.php");
     include("../Layouts/header.php");
     include("../Layouts/nav-student.php");
 

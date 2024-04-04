@@ -3,18 +3,26 @@
     $pageHeader = "My Profile";
     $pageTitle="My Profile";
 
-    require("../FunctionFiles/validate-session.php");
+    require("../FunctionFiles/validate-student-session.php");
+    require("../FunctionFiles/dbconnect.php");
     include("../Layouts/header.php");
     include("../Layouts/nav-student.php");
 
-    $studentName = "Ezal Sujakhu";
-    $studentID = "2011027";
-    $programID = "BBIS2020";
-    $studentEmail ="2011027_ezal@kusom.edu.np";
-    $studentPhone = "9840334055";
-    $studentAddress = "Suryabinayak, Bhaktapur";
-    $studentDOB = "2002-03-30";
-    $studentScholarship = "None";
+    $userName = $_SESSION['userid'];
+
+    $userDetailQuery = "SELECT * FROM student AS std INNER JOIN student_login AS stdlgn ON std.Std_ID = stdlgn.Std_ID WHERE stdlgn.Std_uname = '$userName';";
+    
+    $userDetailResult = $dbConn -> query ($userDetailQuery); 
+    $userData = $userDetailResult->fetch_assoc();
+
+    $studentName = $userData['Std_fname'] . " " . $userData['Std_lname'];
+    $studentID = $userData['Std_ID'];
+    $programID = $userData['Prgm_ID'] . $userData['Enr_year'];
+    $studentEmail = $userData['Std_email'];
+    $studentPhone = $userData['Std_phone'];
+    $studentAddress = $userData['Std_city'];
+    $studentDOB = $userData['Std_dob'];
+    $studentScholarship = $userData['Std_sch_status'];
 ?>
 
 <style>

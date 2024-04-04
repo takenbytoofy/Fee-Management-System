@@ -13,7 +13,8 @@
         $loginTimeStamp = date('Y-m-d h:i:s');
         $timeStampQuery = "UPDATE student_login SET std_last_login = '$loginTimeStamp' WHERE std_uname = '$userName';";
         $dbConn -> query($timeStampQuery);
-        header("Location:../Student/dashboard-student.php");
+        $_SESSION['state'] = 'active';
+        echo "<script> window.open('../Student/dashboard-student.php','_self') </script>";
     } else {
         echo "
         <script> 

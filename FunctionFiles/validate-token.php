@@ -14,6 +14,9 @@
 
     $currentDateTime = date('Y-m-d h:i:s');
 
+    //Validating that the token is correct and the token has not expired 
+    //Token and the expiring time of the token is queried from database
+    
     if ($tokenDetailsResult['change_token'] === $inputToken && $tokenDetailsResult['token_expire'] >= $currentDateTime ) {
         echo "<script> window.open('../Login/new-password.php','_self'); </script>";
     } else {

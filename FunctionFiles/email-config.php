@@ -1,5 +1,5 @@
 <?php
-    
+    // Defining constants that will be used in the mailing function
     define('MAILHOST', "smtp.gmail.com");
 
     define('USERNAME', "suzakhu.ezal@gmail.com");

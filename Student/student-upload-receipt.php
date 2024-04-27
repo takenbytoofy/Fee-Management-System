@@ -1,9 +1,10 @@
 <?php
+    require("../FunctionFiles/validate-student-session.php");
+    require("../FunctionFiles/dbconnect.php");
 
     $pageHeader = "Upload Fee Receipt";
     $pageTitle="Student Fees";
 
-    require("../FunctionFiles/validate-session.php");
     include("../Layouts/header.php");
     include("../Layouts/nav-student.php");
 
@@ -11,101 +12,61 @@
 
 <style>
 
-    #upload-receipt-page-container{
-        height: 100%;
-        display: grid;
-        grid-template-columns: auto;
-        grid-template-rows: auto;
-        align-items: center;
-        justify-content: center;
-    }
-
-    #fee-submit-form {
-        display: grid;
-        grid-template-columns: auto;
-        grid-template-rows: auto auto auto auto;
-        align-items: center;
-        justify-content: center;
-    }
-
-    #form-label{
-        margin: 20px;
+    .upload-receipt-container {
         display: flex;
-        justify-content: center;
         align-items: center;
+        justify-content: center;
+    }
+
+    .upload-receipt-container form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 2rem 2rem;
+        background-color: white;
+        border-radius: 10px;
+        border-style: solid;
+        border-color: #7a7edb;
+        border-width: 3px;
         font-size: 20px;
-    }   
-
-    #input-remarks{
-        margin-bottom: 20px;
-        padding-left: 10px;
-
-        color: rgb(30, 2, 54);
-        font-size: 18px;
-        text-align: left;
-        background-color: rgba(240, 240, 240, 80%);
-
-        width: 400px;
-        height: 40px;
-
-        border-radius: 16px;
-        border: none;
+        position: relative;
     }
 
-    #payment-date{
-        margin-bottom: 20px;
-        padding-left: 10px;
-
-        color: rgb(30, 2, 54);
-        font-size: 18px;
-        text-align: left;
-        background-color: rgba(240, 240, 240, 80%);
-
-        width: 400px;
-        height: 40px;
-
-        border-radius: 16px;
-        border: none;
+    .upload-receipt-container form span {
+        display:grid;
+        grid-template-columns: 12rem 20rem;
+        grid-template-rows: 3.4rem;
     }
 
-    #choose-file{
-        margin-bottom: 20px;
-        padding-left: 10px;
+    .upload-receipt-container form label{
+        margin: .8rem 0rem;
+        position: relative;
+    }
 
-        color: rgb(30, 2, 54);
-        font-size: 18px;
-        text-align: left;
-        background-color: rgba(240, 240, 240, 80%);
-
-        width: 400px;
-        height: 40px;
-
-        border-radius: 16px;
-        border: none;
+    .upload-receipt-container form input, select{
+        margin: .5rem 0rem;
+        padding: .1rem .5rem;
+        font-size: 20px;
+        width: auto;
+        height: 35px;
+        border: 1px solid black;
+        position: relative;
     }
 
     #receipt-submit-button{
-        height: 32px;
-        width: 100px;
-        /* Font Style */
-        font-size: 18px;
         color: white;
-        /* Background and Border */
-        border-radius: 36px;
-        border: none;
-        background-color: rgba(30, 2, 54, 100%);
+        background-color: #6981d6;
+        border-radius: 5px;
+        width: 100px;
+        height: 30px;
+        font-size: 16px;
+        margin-top: 20px;
+        padding: 5px;
     } 
-
     #receipt-submit-button:hover{
-        transition-duration: 300ms;
-        background-color: rgba(30, 2, 54, 50%);
+        background: rgb(146, 160, 212);
+        transform: scale(1.02);
     }
-
-    #receipt-submit-button:active {
-        transition-duration: 300ms;
-        transform: scale(1.05);
-    }
-
 
 </style>
 
@@ -126,15 +87,30 @@
 
 </script>
 
-<div id="upload-receipt-page-container">
+<div class="upload-receipt-container">
 
     <form id="fee-submit-form" action= "../FunctionFiles/fee-submit-function.php" method="post" enctype="multipart/form-data" onsubmit="return validateFeeSubmit()">
 
-        <label id="form-label"> Upload Latest Fee Payment Receipt</label><br>
+        <label id="form-label"> <h3> Upload Latest Fee Payment Receipt </h3> </label>
+        
+        <span>   
+            <label>Remarks: </label>
+            <input type="text" name="submit-remarks" placeholder="Remarks..." id="input-remarks">
+        </span>
+        <span>
+            <label>Deposit Date:</label>
+            <input type="date" name="submit-date" id="payment-date">
+        </span>
+        <span>
+            <Label>Installment No:</Label>
+            <select name="instNumber">
 
-        <input type="text" name="submit-remarks" placeholder="Remarks" id="input-remarks"><br>
-        <input type="date" name="submit-date" id="payment-date"> <br>
-        <input type="file" name="submit-receipt" id="choose-file"> <br>
+            </select>
+        </span>
+        <span>
+            <label>Upload Receipt:</label>
+            <input type="file" name="submit-receipt" id="choose-file">
+        </span>
         
         <button id="receipt-submit-button"> Submit </button>
 

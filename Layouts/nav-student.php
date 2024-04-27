@@ -20,6 +20,7 @@
         background-color: rgba(122, 126, 219, 100%);
         padding:  0.4rem 0.8rem;
         transition: all 0.2s ease;
+        position: fixed;
     }
 
     .sidebar.active ~ .main-content {
@@ -175,73 +176,73 @@
 
 </style>
 
-    <div class="sidebar">
-        <div class="top">
-            <div class="logo">
-                <i class="bx bxs-bank"></i>
-                <span>KU Fee Mangement Portal</span>
-            </div>
-            <i class="bx bx-menu" id="btn"></i>
+<div class="sidebar">
+    <div class="top">
+        <div class="logo">
+            <i class="bx bxs-bank"></i>
+            <span>KU Fee Mangement Portal</span>
         </div>
-        <div class="user">
-            <img src="../Layouts/user.png" alt="User Photo" class="user-img">
-            <div>
-                <p class="bold"> <?php echo $userName; ?> </p>
-                <p> <?php echo $userType; ?> </p>
-            </div>
-        </div>
-        <ul>
-            <li>
-                <a href="../Student/dashboard-student.php">
-                    <i class="bx bx-grid-alt"></i>
-                    <span class="nav-item">Dashboard</span>
-                </a>
-                <span class="tooltip">Dashboard</span>
-            </li>
-            <li>
-                <a href="../Student/student-details.php">
-                    <i class="fas fa-solid fa-user"></i>
-                    <span class="nav-item">Profile</span>
-                </a>
-                <span class="tooltip">Profile</span>
-            </li>
-            <li>
-                <a href="#">
-                    <i class="fas fa-file"></i>
-                    <span class="nav-item">Record</span>
-                </a>
-                <span class="tooltip">Record</span>
-            </li>
-            <li>
-                <a href="../Student/student-fee-structure.php">
-                    <i class="fas fa-file-invoice"></i>
-                    <span class="nav-item">Fees</span>
-                </a>
-                <span class="tooltip">Fees</span>
-            </li>
-            <li>
-                <a href="../Student/student-upload-receipt.php">
-                    <i class="bx bx-upload"></i>
-                    <span class="nav-item">Upload</span>
-                </a>
-                <span class="tooltip">Upload</span>
-            </li>
-            <li>
-                <a href="../FunctionFiles/logout-function.php">
-                    <i class="bx bx-log-out"></i>
-                    <span class="nav-item">Logout</span>
-                </a>
-                <span class="tooltip">Logout</span>
-            </li>
-        </ul>
-        
+        <i class="bx bx-menu" id="btn"></i>
     </div>
-
-    <div class="main-content">
-
-        <div class="container">
-            <h1 class="page-title"> <?php echo $pageHeader ?> </h1>
+    <div class="user">
+        <img src="../Layouts/user.png" alt="User Photo" class="user-img">
+        <div>
+            <p class="bold"> <?php echo $userName; ?> </p>
+            <p> <?php echo $userType; ?> </p>
         </div>
+    </div>
+    <ul>
+        <li>
+            <a href="../Student/dashboard-student.php">
+                <i class="bx bx-grid-alt"></i>
+                <span class="nav-item">Dashboard</span>
+            </a>
+            <span class="tooltip">Dashboard</span>
+        </li>
+        <li>
+            <a href="../Student/student-details.php">
+                <i class="fas fa-solid fa-user"></i>
+                <span class="nav-item">Profile</span>
+            </a>
+            <span class="tooltip">Profile</span>
+        </li>
+        <li>
+            <a href="#">
+                <i class="fas fa-file"></i>
+                <span class="nav-item">Record</span>
+            </a>
+            <span class="tooltip">Record</span>
+        </li>
+        <li>
+            <a href="../Student/student-fee-structure.php">
+                <i class="fas fa-file-invoice"></i>
+                <span class="nav-item">Fees</span>
+            </a>
+            <span class="tooltip">Fees</span>
+        </li>
+        <li>
+            <a href="../Student/student-upload-receipt.php">
+                <i class="bx bx-upload"></i>
+                <span class="nav-item">Upload</span>
+            </a>
+            <span class="tooltip">Upload</span>
+        </li>
+        <li>
+            <a href="../FunctionFiles/logout-function.php">
+                <i class="bx bx-log-out"></i>
+                <span class="nav-item">Logout</span>
+            </a>
+            <span class="tooltip">Logout</span>
+        </li>
+    </ul>
+    
+</div>
+
+<div class="main-content">
+
+    <div class="container">
+        <h1 class="page-title"> <?php echo $pageHeader ?> </h1>
+    </div>
 
 
 

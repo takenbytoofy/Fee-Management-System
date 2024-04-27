@@ -34,13 +34,19 @@
             // If it is the first time the user has logged in
             if ($isNewLogin) {
                 echo "<script> 
-                        alert('New Login Detected. Change password with the link sent to your email.');
+                        alert('New Login Detected. Change password with the 6 digit code sent to your email.');
                     </script>";
 
                 //Token to change password is created and mailed if the user has logged if for first time
                 $token = sprintf("%06d", mt_rand(1, 999999));
                 $tokenExpire = date('Y-m-d h:i:s', strtotime('+10 minutes'));
-                $tokenQuery = "UPDATE student_login SET change_token='$token', token_expire='$tokenExpire';";
+
+                $tokenQuery = "
+                    UPDATE student_login 
+                    SET change_token='$token', token_expire='$tokenExpire' 
+                    WHERE std_uname = '$userName';
+                ";
+
                 $dbConn -> query($tokenQuery);
 
                 $studentDetailsQuery = "SELECT Std_fname, Std_lname, Std_email FROM student WHERE Std_ID = '$studentID'";
@@ -92,7 +98,7 @@
 
             $_SESSION['state'] = "active";
             $loginTimeStamp = date('Y-m-d h:i:s');
-            $timeStampQuery = "UPDATE student_login SET std_last_login = '$loginTimeStamp' WHERE std_uname = '$userName';";
+            $timeStampQuery = "UPDATE admin_login SET adm_last_login = '$loginTimeStamp' WHERE adm_uname = '$userName';";
             $dbConn -> query($timeStampQuery);
             header("Location:../Admin/dashboard-admin.php");
 

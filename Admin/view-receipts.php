@@ -24,7 +24,7 @@
         padding: 5px;
         background-color: #6981d6;
         color: white;
-        width: 100px;
+        width: 120px;
         border-radius: 5px;
         font-size: 18px; 
     }
@@ -72,9 +72,11 @@
 
 <div class="view-receipts-container">
 
+    <?php include("../Layouts/more-fees-option-bar.php");?>
+
     <div class="search-bar">
         <form action="../Admin/view-receipts.php" method="POST">
-            <input class="search-field" type="text" placeholder="Student ID.." name="stdID_search">
+            <input class="search-field" type="text" placeholder="Student ID.." name="id_search">
             <input class="search-field" type="text" placeholder="Program ID.." name="prgm_search">
             <input class="search-field" type="text" placeholder="Enrollment Year..." name="year_search">
             <select class='search-field' name='status_search'>

@@ -197,42 +197,42 @@
                 <i class="bx bx-grid-alt"></i>
                 <span class="nav-item">Dashboard</span>
             </a>
-            <span class="tooltip">Dashboard</span>
+            <!-- <span class="tooltip">Dashboard</span> -->
         </li>
         <li>
             <a href="../Student/student-details.php">
                 <i class="fas fa-solid fa-user"></i>
                 <span class="nav-item">Profile</span>
             </a>
-            <span class="tooltip">Profile</span>
+            <!-- <span class="tooltip">Profile</span> -->
         </li>
-        <li>
+        <!-- <li>
             <a href="#">
                 <i class="fas fa-file"></i>
                 <span class="nav-item">Record</span>
             </a>
             <span class="tooltip">Record</span>
-        </li>
+        </li> -->
         <li>
             <a href="../Student/student-fee-structure.php">
                 <i class="fas fa-file-invoice"></i>
                 <span class="nav-item">Fees</span>
             </a>
-            <span class="tooltip">Fees</span>
+            <!-- <span class="tooltip">Fees</span> -->
         </li>
         <li>
             <a href="../Student/student-upload-receipt.php">
                 <i class="bx bx-upload"></i>
                 <span class="nav-item">Upload</span>
             </a>
-            <span class="tooltip">Upload</span>
+            <!-- <span class="tooltip">Upload</span> -->
         </li>
         <li>
             <a href="../FunctionFiles/logout-function.php">
                 <i class="bx bx-log-out"></i>
                 <span class="nav-item">Logout</span>
             </a>
-            <span class="tooltip">Logout</span>
+            <!-- <span class="tooltip">Logout</span> -->
         </li>
     </ul>
     

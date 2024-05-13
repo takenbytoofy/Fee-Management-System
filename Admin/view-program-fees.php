@@ -71,6 +71,9 @@
 </style>
 
 <div class="view-program-fee-container">
+    
+    <?php include("../Layouts/more-fees-option-bar.php");?>
+
     <div class="search-bar">
         <form  action="../Admin/view-program-fees.php">
             <input class="search-field" type="text" placeholder="Program ID.." name="id_search">

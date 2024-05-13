@@ -12,7 +12,7 @@
          FROM program_bill
          WHERE (Prgm_ID LIKE '%$prgm%') 
          AND (Enr_year LIKE '%$year%')
-         AND (Enr_year LIKE '%$inst%');
+         AND (installment LIKE '%$inst%');
          ";
 
         $viewBillsResult = $dbConn -> query($viewBillsQuery);
@@ -85,7 +85,7 @@
 
                 while ($dataRow = $viewBillsResult->fetch_assoc()) {
 
-                    $url = $dataRow['Bill_ID']
+                    $url = $dataRow['Bill_ID'];
         
         ?>
 

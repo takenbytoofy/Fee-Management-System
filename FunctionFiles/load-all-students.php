@@ -20,6 +20,7 @@
         $viewStudentsResult = $dbConn -> query($viewStudentsQuery);
 
 ?>
+
 <style>
 
     .students-table-display table{
@@ -87,7 +88,7 @@
                     $stdFname = $dataRow['Std_fname'];
                     $stdLname = $dataRow['Std_lname'];
 
-                    $url = "StdId=".$stdID."PrgmID=".$prgmID."EnrYear=".$enrYear; 
+                    $url = "StdID=".$stdID."&PrgmID=".$prgmID."&EnrYear=".$enrYear; 
         ?>
 
                     <tr>
@@ -96,7 +97,7 @@
                         <td><?php echo $enrYear; ?></td>
                         <td><?php echo $stdFname; ?></td>
                         <td><?php echo $stdLname; ?></td>
-                        <td><button id='view-more-button' onclick="window.open('studentProfile.php?<?php echo $url ?>','_self')">View More</button>
+                        <td><button id='view-more-button' onclick="window.open('../Admin/student-profile.php?<?php echo $url ?>','_self')">View More</button>
                     </tr>
 
                 <?php

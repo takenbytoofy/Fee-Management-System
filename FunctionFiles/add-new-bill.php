@@ -1,6 +1,7 @@
 <?php
 
     require("../FunctionFiles/dbconnect.php");
+    require('./email-script.php');
 
     //Get data from the form 
     $prgm = $_POST['prgm'];
@@ -13,7 +14,6 @@
     if ($inst == "Admission") {
         $studenBillDueField = 'admission_fee_due';
         $studenBillStatusField = 'admission_fee_status';
-
     } else {
         $studenBillDueField = 'inst_' . $inst . "_due";
         $studenBillStatusField = 'inst_' . $inst . "_status";
@@ -40,16 +40,70 @@
             
         try {
             $dbConn -> query($newProgramBillInsertQuery);
-            $updateStudentBillQuery = "
-                UPDATE TABLE student_bill
 
+            $getBillIDQuery = "
+                SELECT Bill_ID 
+                FROM program_bill
+                WHERE Prgm_ID = '$prgm' AND Enr_year = '$enrYear' AND installment = '$inst';";
+
+            $getBillIDResult = $dbConn ->query($getBillIDQuery);
+            $billIdData = $getBillIDResult -> fetch_assoc();
+            $billID = $billIdData['Bill_ID'];
+
+            $updateStudentBillQuery = "
+                INSERT INTO student_bill (Std_ID, Prgm_ID, Enr_year, Bill_ID, Bill_Status)
+                SELECT S.StD_ID, Pb.Prgm_ID, Pb.Enr_year, Pb.Bill_ID, 'Unpaid' as Bill_Status
+                FROM program_bill AS Pb
+                JOIN student as S
+                ON S.Prgm_ID = Pb.Prgm_ID AND S.Enr_year = Pb.Enr_year
+                HAVING Pb.Bill_ID = '$billID';
             ";
-            echo "
+            try {
+                $dbConn -> query($updateStudentBillQuery);
+
+                $emailsQuery = "
+                    SELECT S.Std_fname, S.Std_email
+                    FROM student as S
+                    INNER JOIN student_bill AS Sb
+                    ON S.Std_ID = Sb.Std_ID AND S.Prgm_ID = Sb.Prgm_ID AND S.Enr_year = Sb.Enr_year
+                    WHERE Sb.Bill_ID = '$billID';
+                ";
+
+                try {
+                    $emailsResult = $dbConn -> query($emailsQuery);
+
+                    $subject = 'New Bill ' . $inst . " Installment"; 
+
+                    while ($emailsData = $emailsResult -> fetch_assoc()) {
+                        $msg = "Dear ". $emailsData['Std_fname'] ." Your bill of amount: " . $amount . " for " . $inst . " installment is due by " . $dueDate;
+                        $to = $emailsData['Std_email'];
+                        sendMail($to, $subject, $msg);
+                    }
+
+                    echo "
+                    <script>
+                        alert('New Bill added. Emails sent.');
+                        window.location.href = '../Admin/view-bills.php';
+                    </script>
+                    ";
+                } catch (Exception $ex) {
+                    echo "
+                    <script>
+                    alert('Email could not be sent.');
+
+                    </script
+                    ";
+                }
+
+            } catch (Exception $ex) {
+                echo "
                 <script>
-                    alert('New Bill added.');
-                    window.location.href = '../Admin/view-bills.php';
+                    alert('Student Bill could not be added.');
+                    window.location.href = '../Admin/new-bill.php';
                 </script>
                 ";
+            }
+
         } catch (Exception $ex) {
             echo "
                 <script>

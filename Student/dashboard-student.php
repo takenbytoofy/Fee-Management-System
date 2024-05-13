@@ -1,74 +1,187 @@
 <?php
+    require("../FunctionFiles/validate-student-session.php");
+    require("../FunctionFiles/dbconnect.php");
 
     $pageHeader = "Dashboard";
     $pageTitle = "Student Dashboard";
 
-    require("../FunctionFiles/validate-student-session.php");
     include("../Layouts/header.php");
     include("../Layouts/nav-student.php");
 
 ?>
 
+<div class="container">
+    <div class="content">
+        <div class="cards">
+            <div class="card">
+                <div class="box">
+                    <h1>-----</h1>
+                    <h3> Paid Till Date </h3>
+                </div>
+                <div class="icon-case">
+                    <i class="fas fa-solid fa-list"></i>
+                </div>
+            </div>
+            <div class="card">
+                <div class="box">
+                    <h1> ----- </h1>
+                    <h3> Payments Made </h3>
+                </div>
+                <div class="icon-case">
+                <i class="fas fa-solid fa-receipt"></i>
+                </div>
+            </div>
+            <div class="card">
+                <div class="box">
+                    <h1> ----</h1>
+                    <h3> Unpaid Bills </h3>
+                </div>
+                <div class="icon-case">
+                <i class="fas fa-solid fa-coins"></i>
+                </div>
+            </div>
+            <div class="card">
+                <div class="box">
+                    <h1>---- </h1>
+                    <h3> Unverified Payments </h3>
+                </div>
+                <div class="icon-case">
+                <i class="fas fa-solid fa-clock"></i>
+                </div>
+            </div>
+        </div>
+        
+        <div class="content-2">
+            <i id="bell" class="fas fa-solid fa-bell"></i>
+            <h2>Upcoming Payment </h2> <br>  
+            <div class="search-bar">
+                <form id="search-bar" action="./Search.php">
+                    <input class="search-field" type="text" placeholder="Year.." name="search">
+                    <input class="search-field" type="text" placeholder="Installment Number.." name="search">
+                    <input class="search-field" type="text" placeholder="Amount.." name="search">
+                    <button id="search-button" type="submit"><i class="fa fa-search"></i></button>
+                </form>
+            </div>
+
+                
+        </div>
+    </div>
+</div>
+
+
+
 <style>
 
-    .dashboard-container {
-        margin: 0.2rem 0.2rem;
+    .container .content {
+        position: relative;
+        margin-top: 20px;
+        height: auto;
     }
 
-    .dashboard-tiles {
+    .container .content .cards {
+        padding: 15px 15px;
         display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: wrap;
     }
 
-    .dashboard-tiles a{
-        margin: 0.2rem 1rem;
+    .container .content .icon-case{
+        font-size: 30px;
+    }
+
+    .container .content .cards .card {
+        width: 300px;
+        height: 150px;
+        background: white;
+        border: 4px solid #6981d6;
+        border-radius: 10px;
+        margin: 20px 10px;
         display: flex;
-        flex-direction: column;
-        border-radius: 24px;
-        min-height: 250px;
-        min-width: 250px;
-        background-color: #ffffff;
-        box-shadow: 0 0.5rem 0.8rem rgba(56, 35, 92, 20%);
+        align-items: center;
+        justify-content: space-around;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    }
+            
+    .container .content .content-2 {
+        width: 100%;
+        display: flex;
         align-items: center;
         justify-content: center;
-        text-decoration: none;
-        transition: none;
     }
 
-</style>
+    .container .content .content-2 {
+        display: flex;
+        flex-direction: column;
+        padding: 2rem 2rem;
+        background-color: #6981d6;
+        border: 2px solid white;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);  
+    }
 
-<div class="dashboard-container">
+    .container .content .content-2 h2 {
+        font-size: 28px;
+        color: white;
+    }
+
+    .content-2 .search-bar {
+        display: flex;
+        
+    }
+
+    #view-all{
+        width: 100px;
+        height: 20px;
+        font: 18px;
+        background-color: #f59090;
+        color: white;
+        border: 2px solid white;
+        border-radius: 5px;
+        float: right;
+    }
+    .container .content .content-2 table {
+        width: auto;
+        border: 3px solid white;
+        border-radius: 4px;
+        background-color: white;
+    }
     
-    <div class="dashboard-tiles">
-        <a href="#">
-            <i class="fas fa-bell"></i>  
-            <h3>Upcoming Fee</h3> 
-            <br>
-            Date
-        </a>
+    th{
+        background-color:  #f59090;
+        color: white;
+        padding: 10px;
+        font-size: 18px;
+    }
 
-        <a href="#">
-            <i class="fas fa-file-invoice"></i>
-            <h3>Total Payments Made</h3>
-            <br>
-            Rs
-        </a>
+    td{
+        border: 2px solid black;
+        border-collapse: collapse;
+        text-align: center;
+        font-size: 18px;
+    }
 
-        <a href="#">
-            <i class="fas fa-file-invoice"></i>
-            <h3>Fees Due</h3>
-            <br>
-            Rs
-        </a>
+    .search-field{
+        padding: 5px;
+        margin-top: 10px;
+        margin-right: 0px;
+        font-size: 16px;
+        border: 2px solid black;
+        border-radius: 5px;
+        width: 200px;
+    }
 
-        <a href="#">
-            <i class="fas fa-file-invoice"></i>
-            <h3>Remaining Fees</h3>
-            <br>
-            Rs
-        </a>
-    </div>
-
-</div>
+    #search-button{
+        padding: 5px;
+        margin-right: 30px;
+        margin-left: 0;
+        font-size: 16px;
+        background: white;
+        border: 2px solid black;
+        cursor: pointer;
+        border-radius: 5px;   
+    }
+</style>
 
 <?php
 

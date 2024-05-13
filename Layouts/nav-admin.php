@@ -198,35 +198,35 @@
                 <i class="bx bx-grid-alt"></i>
                 <span class="nav-item">Dashboard</span>
             </a>
-            <span class="tooltip">Dashboard</span>
+            <!-- <span class="tooltip">Dashboard</span> -->
         </li>
         <li>
             <a href="../Admin/view-students.php">
                 <i class="fas fa-solid fa-user"></i>
                 <span class="nav-item">Students</span>
             </a>
-            <span class="tooltip">Students</span>
+            <!-- <span class="tooltip">Students</span> -->
         </li>
         <li>
             <a href="../Admin/view-programs.php">
                 <i class="fas fa-file"></i>
                 <span class="nav-item">Programs</span>
             </a>
-            <span class="tooltip">Programs</span>
+            <!-- <span class="tooltip">Programs</span> -->
         </li>
         <li>
             <a href="../Admin/view-fees.php">
                 <i class="fas fa-dollar-sign"></i>
                 <span class="nav-item">Fees</span>
             </a>
-            <span class="tooltip">Fees</span>
+            <!-- <span class="tooltip">Fees</span> -->
         </li>
         <li>
             <a href="../FunctionFiles/logout-function.php">
                 <i class="bx bx-log-out"></i>
                 <span class="nav-item">Logout</span>
             </a>
-            <span class="tooltip">Logout</span>
+            <!-- <span class="tooltip">Logout</span> -->
         </li>
     </ul>
     

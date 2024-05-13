@@ -72,6 +72,9 @@
 
 <div class="view-bills-container">
 
+    <?php include("../Layouts/more-fees-option-bar.php");?>
+
+
     <div class="search-bar">
         <form action="../Admin/view-bills.php" method="POST">
             <input class="search-field" type="text" placeholder="Program ID.." name="prgm_search">

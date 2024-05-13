@@ -2,6 +2,7 @@
 
     require("../FunctionFiles/validate-admin-session.php");
     require("../FunctionFiles/dbconnect.php");
+    
     $pageHeader = "Student";
     $pageTitle = "Student";
 

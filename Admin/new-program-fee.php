@@ -27,6 +27,7 @@
         let numOfInst = parseFloat(document.getElementById("totalInstallment").value);
         let totalFee = admFee + (numOfInst * instFee);
 
+
         if (isNaN(admFee)) {
             totalFee = insFee * numOfInst;
         } else if (isNaN(instFee)) {

@@ -106,14 +106,7 @@
 
 <div class="view-fees-container">
 
-    <div class="more-fee-options-bar"> 
-
-        <span class="options" onclick="window.open('../Admin/view-receipts.php','_self')"> Fee Receipts </span> <br>
-        <span class="options" onclick="window.open('../Admin/view-bills.php','_self')">Program Bills</span> <br>
-        <span class="options" onclick="window.open('../Admin/view-student-bills.php','_self')">Student Bills</span> <br>
-        <span class="options" onclick="window.open('../Admin/view-program-fees.php','_self')">Program Fees </span> <br>
-
-    </div>
+    <?php include("../Layouts/more-fees-option-bar.php");?>
 
     <div class="unverified-receipts-container">
 

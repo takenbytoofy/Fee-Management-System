@@ -10,6 +10,21 @@
 
 ?>
 
+<div class="student-fees-container">
+
+    <div class="unpaid-bills-container">
+        
+    </div>
+
+    <div class="unverfied-bills-container">
+
+    </div>
+
+    <div class="paid-bills-container">
+
+    </div>
+
+</div>
 
 <?php
 

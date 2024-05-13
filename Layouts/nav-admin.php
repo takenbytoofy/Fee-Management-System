@@ -1,6 +1,6 @@
 <?php
 
-    $userName = "Admin Name";
+    $userName = $_SESSION['userid'];
     $userType = "Admin";
 ?>
 

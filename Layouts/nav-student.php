@@ -1,5 +1,5 @@
 <?php
-    $userName = "Student Name";
+    $userName = $_SESSION['userid'];
     $userType = "Student";
 ?>
 

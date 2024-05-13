@@ -8,6 +8,32 @@
     include("../Layouts/header.php");
     include("../Layouts/nav-student.php");
 
+    $username = $_SESSION['userid'];
+
+    $studentDetailsQuery = "
+    SELECT S.Std_ID, S.Prgm_ID, S.Enr_year
+    FROM student as S
+    INNER JOIN student_login as Sl
+    ON S.Std_ID = Sl.Std_ID
+    WHERE Sl.std_uname = '$username';
+    ";
+
+    $studentDetailsResult = $dbConn -> query($studentDetailsQuery);
+    $studentDetailsData = $studentDetailsResult -> fetch_assoc();
+
+    $stdID = $studentDetailsData['Std_ID'];
+    $prgmID = $studentDetailsData['Prgm_ID'];
+    $enrYear = $studentDetailsData['Enr_year'];
+
+    $unpaidBillsQuery = "
+    SELECT sb.Bill_ID, pb.installment, pb.create_date, pb.due_date
+    FROM student_bill AS sb
+    INNER JOIN program_bill as pb
+    ON sb.Bill_ID = pb.Bill_ID
+    WHERE sb.Std_ID = '$stdID' AND sb.Prgm_ID = '$prgmID' AND sb.Enr_year = '$enrYear' AND sb.Bill_Status = 'Unpaid';
+    ";
+
+    $unpaidBillsResult = $dbConn -> query($unpaidBillsQuery);
 ?>
 
 <style>
@@ -72,12 +98,13 @@
 
 <script>
 
-    function validateFeeSubmit () {
-        var submitRemarks = document.forms["fee-submit-form"]["submit-remarks"].value;
-        var submitDate = document.forms["fee-submit-form"]["submit-date"].value;
-        var submitFile = document.forms["fee-submit-form"]["submit-receipt"].value;
+    function validateFee () {
+        let submitRemarks = document.forms["fee-submit-form"]["feeRemarks"].value;
+        let submitDate = document.forms["fee-submit-form"]["depoDate"].value;
+        let submitBill = document.forms["fee-submit-form"]["billID"].value;
+        let submitFile = document.forms["fee-submit-form"]["feeReceiptImg"].value;
 
-        if (submitRemarks == "" || submitDate == "" || submitFile == "") {
+        if (submitRemarks == "" || submitDate == "" || submitBill == "" || submitFile == "") {
             alert("All fields required");
             return false;
         } else {
@@ -89,30 +116,47 @@
 
 <div class="upload-receipt-container">
 
-    <form id="fee-submit-form" action= "../FunctionFiles/fee-submit-function.php" method="post" enctype="multipart/form-data" onsubmit="return validateFeeSubmit()">
+    <form id="fee-submit-form" action= "../FunctionFiles/fee-submit-function.php" onsubmit="return validateFee()" method="post" enctype="multipart/form-data" >
 
         <label id="form-label"> <h3> Upload Latest Fee Payment Receipt </h3> </label>
         
         <span>   
-            <label>Remarks: </label>
-            <input type="text" name="submit-remarks" placeholder="Remarks..." id="input-remarks">
+            <label>Remarks:</label>
+            <input type="text" name="feeRemarks" placeholder="Remarks..." id="feeRemarks">
         </span>
         <span>
             <label>Deposit Date:</label>
-            <input type="date" name="submit-date" id="payment-date">
+            <input type="date" name="depositDate" id="depositDate">
         </span>
         <span>
-            <Label>Installment No:</Label>
-            <select name="instNumber">
+            <label>Bill: </Label>
+            <select name="billID" id="billID">
+                <option disabled selected value>
+            <?php
+            
+                if ($unpaidBillsResult -> num_rows > 0) {
+                
+                    while ($data = $unpaidBillsResult->fetch_assoc()) {
+                        $billID = $data['Bill_ID'];
+                        if ($data['installment'] == "Admission") {
+                            $inst = $data['installment'];
+                        } else {
+                            $inst = 'Installment ' . $inst;
+                        }
+                        echo "<option value=".$data['Bill_ID']."> Bill: ".$billID." - ".$inst."</option>";
+                    }
 
+                }
+            
+            ?>
             </select>
         </span>
         <span>
             <label>Upload Receipt:</label>
-            <input type="file" name="submit-receipt" id="choose-file">
+            <input type="file" name="feeReceiptImg" id="feeReceiptImg">
         </span>
         
-        <button id="receipt-submit-button"> Submit </button>
+        <button id="receipt-submit-button" type="button"> Submit </button>
 
     </form>
 

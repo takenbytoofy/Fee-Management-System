@@ -214,7 +214,7 @@
             <span class="tooltip">Record</span>
         </li> -->
         <li>
-            <a href="../Student/student-fee-structure.php">
+            <a href="../Student/student-fees.php">
                 <i class="fas fa-file-invoice"></i>
                 <span class="nav-item">Fees</span>
             </a>

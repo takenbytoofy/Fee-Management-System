@@ -83,6 +83,7 @@
                 <option disabled selected value>
                 <option value="Verified">Verfied</option>
                 <option value="Unverified">Unverfied</option>
+                <option value="Declined">Declined</option>
             </select>
             <button id="search-button" type="submit"><i class="fa fa-search"></i></button>
         </form>

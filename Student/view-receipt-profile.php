@@ -1,15 +1,15 @@
 <?php
 
-    require("../FunctionFiles/validate-admin-session.php");
+    require("../FunctionFiles/validate-student-session.php");
     require("../FunctionFiles/dbconnect.php");
 
-    $pageHeader = "Verify Receipt";
-    $pageTitle = "Verify Receipt";
+    $pageHeader = "View Receipt";
+    $pageTitle = "View Receipt";
 
     include("../Layouts/header.php");
-    include("../Layouts/nav-admin.php");
+    include("../Layouts/nav-student.php");
 
-    $recID = $_GET['recID'];
+    $recID = $_GET['RecID'];
 
     $receiptDetailsQuery = 
     "
@@ -70,14 +70,16 @@
         
         <h4>Uploaded Receipt</h4>
         <div class='receipt-image'>
-            <?php print $receiptImg;?>
+            <a href="../Student/full-receipt-image.php?RecID=<?php echo $recID?>" target="_blank">
+                <img src="data:image/jpeg;base64,<?= base64_encode($receiptImg); ?>" alt="Image">
+            </a>
         </div>
         <br>
 
-        <div class="buttons"> 
+        <!-- <div class="buttons"> 
             <button id="accept-button" onclick=""> Accept </button> 
             <button id="decline-button" onclick=""> Decline</button>
-        </div>
+        </div> -->
     </form>
 
 </div>
@@ -128,9 +130,17 @@
     }
 
     .receipt-image{
+        display: flex;
         width: 550px; 
         height: 380px;
         border: 2px solid #7a7edb;
+        border-radius: 4px;
+    }
+
+    .receipt-image img{
+        margin: auto;
+        width: 545px; 
+        height: 375px;
         border-radius: 4px;
     }
     

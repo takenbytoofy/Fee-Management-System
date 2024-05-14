@@ -8,13 +8,13 @@
     if (isset($_POST['year_search'])) {$year = $_POST['year_search'];} else {$year = '';}
     if (isset($_POST['status_search'])) {$status = $_POST['status_search'];} else {$status = 'Unverified';}
 
-    $viewReceiptsQuery = 
-        "SELECT *
-         FROM fee_receipts
-         WHERE (Prgm_ID LIKE '%$prgm%') 
-         AND (Enr_year LIKE '%$year%')
-         AND (Std_ID LIKE '%$id%')
-         AND (receipt_status = '$status');
+    $viewReceiptsQuery = "
+        SELECT *
+        FROM fee_receipts
+        WHERE (Prgm_ID LIKE '%$prgm%') 
+        AND (Enr_year LIKE '%$year%')
+        AND (Std_ID LIKE '%$id%')
+        AND (receipt_status = '$status');
          ";
 
         $viewReceiptsResult = $dbConn -> query($viewReceiptsQuery);
@@ -79,7 +79,6 @@
                         <th>Student ID</th>
                         <th>Program ID</th>
                         <th>Payment Date</th>
-                        <th>Installment</th>
                         <th>Receipt Status</th>
                         <th>Action</th>
                     </tr>
@@ -87,7 +86,7 @@
 
                 while ($dataRow = $viewReceiptsResult->fetch_assoc()) {
 
-                    $url = "recID=".$dataRow['receipt_id'];
+                    $url = "RecID=".$dataRow['receipt_id'];
         
         ?>
 
@@ -96,9 +95,8 @@
                 <td><?php echo $dataRow['Std_ID']; ?></td>
                 <td><?php echo $dataRow['Prgm_ID']; ?></td>
                 <td><?php echo $dataRow['pmt_date']; ?></td>
-                <td><?php echo $dataRow['installment']; ?></td>
                 <td><?php echo $dataRow['receipt_status']; ?></td>
-                <td><button id='edit-button' onclick="window.open('../FunctionFiles/receipt-profile.php?<?php echo $url ?>','_self')">More</button>
+                <td><button id='edit-button' onclick="window.open('../Admin/receipt-profile.php?<?php echo $url ?>','_self')">More</button>
             </tr>
 
         <?php

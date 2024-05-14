@@ -27,16 +27,16 @@
     $programCountQueryData = $programCountQueryResult -> fetch_assoc();
     $programCount = $programCountQueryData['programCount'];
 
-    $activeBillCountQuery = 
+    $unpaidBillCountQuery = 
     "
-        SELECT COUNT(*) AS activeBillCount
-        FROM program_bill
-        WHERE bill_status = 'AC';
+        SELECT COUNT(*) AS unpaidBillCount
+        FROM student_bill
+        WHERE Bill_Status = 'Unpaid';
     ";
 
-    $activeBillCountQueryResult = $dbConn -> query($activeBillCountQuery);
-    $activeBillCountQueryData = $activeBillCountQueryResult -> fetch_assoc();
-    $activeBillCount = $activeBillCountQueryData['activeBillCount'];
+    $unpaidBillCountQueryResult = $dbConn -> query($unpaidBillCountQuery);
+    $unpaidBillCountQueryData = $unpaidBillCountQueryResult -> fetch_assoc();
+    $unpaidBillCount = $unpaidBillCountQueryData['unpaidBillCount'];
 
     $unverifiedReceiptsCountQuery = 
     "
@@ -53,42 +53,50 @@
 <div class="container">
     <div class="content">
         <div class="cards">
-            <div class="card">
-                <div class="box">
-                    <h1> <?php echo $studentCount?> </h1>
-                    <h3> Enrolled Students</h3>
+            <a href="../Admin/view-students.php">
+                <div class="card">
+                    <div class="box">
+                        <h1> <?php echo $studentCount?> </h1>
+                        <h3> Enrolled Students</h3>
+                    </div>
+                    <div class="icon-case">
+                        <i class="fas fa-solid fa-user"></i>
+                    </div>
                 </div>
-                <div class="icon-case">
-                    <i class="fas fa-solid fa-user"></i>
+            </a>
+            <a href="../Admin/view-programs.php">
+                <div class="card">
+                    <div class="box">
+                        <h1> <?php echo $programCount?> </h1>
+                        <h3>Programs </h3>
+                    </div>
+                    <div class="icon-case">
+                    <i class="fas fa-solid fa-book"></i>
+                    </div>
                 </div>
-            </div>
-            <div class="card">
-                <div class="box">
-                    <h1> <?php echo $programCount?> </h1>
-                    <h3>Programs </h3>
+            </a>
+            <a href="../Admin/view-student-bills.php">
+                <div class="card">
+                    <div class="box">
+                        <h1> <?php echo $unpaidBillCount?> </h1>
+                        <h3>Unpaid Bills</h3>
+                    </div>
+                    <div class="icon-case">
+                    <i class="fas fa-solid fa-file"></i>
+                    </div>
                 </div>
-                <div class="icon-case">
-                <i class="fas fa-solid fa-book"></i>
+            </a>
+            <a href="../Admin/view-fees.php">
+                <div class="card">
+                    <div class="box">
+                        <h1> <?php echo $unverifiedReceiptsCount?> </h1>
+                        <h3>Unverified Receipts</h3>
+                    </div>
+                    <div class="icon-case">
+                    <i class="fas fa-solid fa-users"></i>
+                    </div>
                 </div>
-            </div>
-            <div class="card">
-                <div class="box">
-                    <h1> <?php echo $activeBillCount?> </h1>
-                    <h3>Active Bills</h3>
-                </div>
-                <div class="icon-case">
-                <i class="fas fa-solid fa-file"></i>
-                </div>
-            </div>
-            <div class="card">
-                <div class="box">
-                    <h1> <?php echo $unverifiedReceiptsCount?> </h1>
-                    <h3>Unverified Receipts</h3>
-                </div>
-                <div class="icon-case">
-                <i class="fas fa-solid fa-users"></i>
-                </div>
-            </div>
+            </a>
         </div>
         
         <div class="content-2">
@@ -121,6 +129,11 @@
         align-items: center;
         justify-content: space-between;
         flex-wrap: wrap;
+    }
+
+    .container .content .cards a{
+        text-decoration: none;
+        color: black;
     }
 
     .container .content .icon-case{

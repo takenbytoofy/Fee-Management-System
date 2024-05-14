@@ -38,7 +38,7 @@
         gap: 2rem;
     }
 
-    .unpaid-bills-container, .unverified-bills-container, .paid-bills-container {
+    .unpaid-bills-container, .unverified-bills-container, .paid-bills-container, .declined-bills-container {
         padding: 2rem 2rem;
         display: flex;
         flex-direction: column;
@@ -51,7 +51,7 @@
         border-radius: 24px;
     }
 
-    .unpaid-bills-container, .unverified-bills-container, .paid-bills-container h2 {
+    .unpaid-bills-container, .unverified-bills-container, .paid-bills-container, .declined-bills-container h2 {
         color: rgba(56, 35, 92, 100%);
     }
 
@@ -69,11 +69,16 @@
         <?php include("../FunctionFiles/student-load-unverified-bills.php");?>
     </div>
     
+    <div class="declined-bills-container">
+        <h2>Declined Receipts</h2>
+        <?php include("../FunctionFiles/student-load-declined-receipts.php");?>
+    </div>
+
     <div class="paid-bills-container">
         <h2>Paid Bills</h2>
         <?php include("../FunctionFiles/student-load-paid-bills.php");?>
     </div>
-
+    
 </div>
 
 <?php

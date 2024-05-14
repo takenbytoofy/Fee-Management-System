@@ -1,7 +1,6 @@
 <?php
 
     require("../FunctionFiles/dbconnect.php");
-    $username = $_SESSION['userid'];
 
     $unverifiedBillsQuery = "
         SELECT fr.receipt_id, fr.pmt_date, sb.Bill_ID, pb.installment, pb.due_date
@@ -107,7 +106,7 @@
                 <td><?php echo $data[$field]; ?></td>
                 <td><?php echo $unverifiedBillsData['due_date']; ?></td>
                 <td><?php echo $unverifiedBillsData['pmt_date']; ?></td>
-                <td><button id="view-button" onclick="window.open('../Student/view-receipt-profile.php?RecID=<?php echo $unverifiedBillsData['receipt_id'];?>','_self')">View</button></td>
+                <td><button id="view-button" onclick="window.open('../Admin/receipt-profile.php?RecID=<?php echo $unverifiedBillsData['receipt_id'];?>','_self')">View</button></td>
             </tr>
 
         <?php

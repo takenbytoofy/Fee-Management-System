@@ -6,13 +6,15 @@
     if (isset($_POST['id_search'])) {$id = $_POST['id_search'];} else {$id = '';}
     if (isset($_POST['prgm_search'])) {$prgm = $_POST['prgm_search'];} else {$prgm = '';}
     if (isset($_POST['year_search'])) {$year = $_POST['year_search'];} else {$year = '';}
+    if (isset($_POST['status_search'])) {$status = $_POST['status_search'];} else {$status = 'Unpaid';}
 
-    $viewStudentBillsQuery = 
-        "SELECT *
+    $viewStudentBillsQuery = "
+        SELECT *
          FROM student_bill
          WHERE (Std_ID LIKE '%$id%')
          AND (Prgm_ID LIKE '%$prgm%') 
-         AND (Enr_year LIKE '%$year%');
+         AND (Enr_year LIKE '%$year%')
+         AND (Bill_Status = '$status');;
          ";
 
         $viewStudentBillsResult = $dbConn -> query($viewStudentBillsQuery);

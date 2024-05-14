@@ -42,6 +42,7 @@
         display: flex;
         align-items: center;
         justify-content: center;
+        margin: 2rem 0rem;
     }
 
     .upload-receipt-container form {
@@ -98,25 +99,27 @@
 
 <script>
 
-    function validateFee () {
-        let submitRemarks = document.forms["fee-submit-form"]["feeRemarks"].value;
-        let submitDate = document.forms["fee-submit-form"]["depoDate"].value;
-        let submitBill = document.forms["fee-submit-form"]["billID"].value;
-        let submitFile = document.forms["fee-submit-form"]["feeReceiptImg"].value;
+    function newStudentFormValidate(){
 
-        if (submitRemarks == "" || submitDate == "" || submitBill == "" || submitFile == "") {
-            alert("All fields required");
+        let a = document.forms["fee-submit-form"]["feeRemarks"].value;
+        let b = document.forms["fee-submit-form"]["depositDate"].value;
+        let c = document.forms["fee-submit-form"]["billID"].value;
+        let d = document.forms["fee-submit-form"]["feeReceiptImg"].value;
+
+        if(a=="" || b=="" || c=="" || d==""){
+            alert("Please fill all details.");
             return false;
-        } else {
+        }else {
             return true;
         }
+        
     }
 
 </script>
 
 <div class="upload-receipt-container">
 
-    <form id="fee-submit-form" action= "../FunctionFiles/fee-submit-function.php" onsubmit="return validateFee()" method="post" enctype="multipart/form-data" >
+    <form id="fee-submit-form" action="../FunctionFiles/student-fee-submit.php" onsubmit="return newStudentFormValidate()" method="post" enctype="multipart/form-data">
 
         <label id="form-label"> <h3> Upload Latest Fee Payment Receipt </h3> </label>
         
@@ -141,7 +144,7 @@
                         if ($data['installment'] == "Admission") {
                             $inst = $data['installment'];
                         } else {
-                            $inst = 'Installment ' . $inst;
+                            $inst = 'Installment ' . $data['installment'];
                         }
                         echo "<option value=".$data['Bill_ID']."> Bill: ".$billID." - ".$inst."</option>";
                     }
@@ -153,10 +156,10 @@
         </span>
         <span>
             <label>Upload Receipt:</label>
-            <input type="file" name="feeReceiptImg" id="feeReceiptImg">
+            <input type="file" name="feeReceiptImg" id="feeReceiptImg" multiple="">
         </span>
         
-        <button id="receipt-submit-button" type="button"> Submit </button>
+        <button id="receipt-submit-button" type="submit"> Submit </button>
 
     </form>
 

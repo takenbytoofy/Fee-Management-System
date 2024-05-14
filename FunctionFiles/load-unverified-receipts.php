@@ -88,7 +88,7 @@
                     $enrYear = $dataRow['Enr_year'];
                     $pmtDate = $dataRow['pmt_date'];
 
-                $url = "recID=".$recID;
+                $url = "RecID=".$recID;
         
         ?>
 
@@ -99,7 +99,7 @@
                 <td><?php echo $enrYear; ?></td>
                 <td><?php echo $pmtDate; ?></td>
 
-                <td><button id='view-more-button' onclick="window.open('../FunctionFiles/receipt-profile.php?<?php echo $url ?>','_self')">View</button>
+                <td><button id='view-more-button' onclick="window.open('../Admin/receipt-profile.php?<?php echo $url ?>','_self')">View</button>
             </tr>
 
         <?php

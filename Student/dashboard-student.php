@@ -8,6 +8,95 @@
     include("../Layouts/header.php");
     include("../Layouts/nav-student.php");
 
+    $username = $_SESSION['userid'];
+
+    $studentDetailsQuery = "
+    SELECT S.Std_ID, S.Prgm_ID, S.Enr_year
+    FROM student as S
+    INNER JOIN student_login as Sl
+    ON S.Std_ID = Sl.Std_ID
+    WHERE Sl.std_uname = '$username';
+    ";
+
+    $studentDetailsResult = $dbConn -> query($studentDetailsQuery);
+    $studentDetailsData = $studentDetailsResult -> fetch_assoc();
+
+    $stdID = $studentDetailsData['Std_ID'];
+    $prgmID = $studentDetailsData['Prgm_ID'];
+    $enrYear = $studentDetailsData['Enr_year'];
+
+    $billsQuery = "
+    SELECT sb.Bill_ID, pb.installment
+    FROM student_bill AS sb
+    INNER JOIN program_bill AS pb
+    ON sb.Bill_ID = pb.Bill_ID
+    WHERE sb.Bill_Status = 'Paid' AND sb.Std_ID = '$stdID' AND sb.Prgm_ID = '$prgmID' AND sb.Enr_year = '$enrYear';
+    ";
+
+    $billsResult = $dbConn -> query($billsQuery);
+    $totalAmount = 0;
+    $installments = array();
+
+    if ($billsResult -> num_rows > 0) {
+        while ($billsData = $billsResult -> fetch_assoc()) {
+
+            $inst = $billsData['installment'];
+            $installments[] = $inst;
+
+            if ($inst == "Admission") {
+                $field = 'admission_fee';
+            } else {
+                $field = 'inst_' . $inst;
+            }
+        
+            $amountQuery = "
+                SELECT $field 
+                FROM fee_structure
+                WHERE Prgm_ID = '$prgmID' AND Enr_year = '$enrYear';
+            "; 
+        
+            $amountQueryResult = $dbConn -> query($amountQuery);
+        
+            $data = $amountQueryResult -> fetch_assoc();
+            
+            $totalAmount += $data[$field];
+
+        }
+    }
+
+
+    $paidBillCountQuery = 
+    "
+    SELECT COUNT(*) AS paidBillCount
+    FROM student_bill
+    WHERE Bill_Status = 'Paid' AND Std_ID = '$stdID' AND Prgm_ID = '$prgmID' AND Enr_year = '$enrYear';
+    ";
+
+    $paidBillCountQueryResult = $dbConn -> query($paidBillCountQuery);
+    $paidBillCountQueryData = $paidBillCountQueryResult -> fetch_assoc();
+    $paidBillCount = $paidBillCountQueryData['paidBillCount'];
+
+    $unpaidBillCountQuery = 
+    "
+    SELECT COUNT(*) AS unpaidBillCount
+    FROM student_bill
+    WHERE Bill_Status = 'Unpaid' AND Std_ID = '$stdID' AND Prgm_ID = '$prgmID' AND Enr_year = '$enrYear';
+    ";
+
+    $unpaidBillCountQueryResult = $dbConn -> query($unpaidBillCountQuery);
+    $unpaidBillCountQueryData = $unpaidBillCountQueryResult -> fetch_assoc();
+    $unpaidBillCount = $unpaidBillCountQueryData['unpaidBillCount'];
+
+    $unverifiedReceiptsCountQuery = 
+    "
+        SELECT COUNT(*) AS unverifiedReceiptsCount
+        FROM fee_receipts
+        WHERE receipt_status = 'Unverified' AND Std_ID = '$stdID' AND Prgm_ID = '$prgmID' AND Enr_year = '$enrYear';
+    ";
+    $unverifiedReceiptsCountQueryResult = $dbConn -> query($unverifiedReceiptsCountQuery);
+    $unverifiedReceiptsCountQueryData = $unverifiedReceiptsCountQueryResult -> fetch_assoc();
+    $unverifiedReceiptsCount = $unverifiedReceiptsCountQueryData['unverifiedReceiptsCount'];
+
 ?>
 
 <div class="container">
@@ -15,7 +104,8 @@
         <div class="cards">
             <div class="card">
                 <div class="box">
-                    <h1>-----</h1>
+                    <h1></h1>
+                    <h1> <?php echo $totalAmount?> </h1>
                     <h3> Paid Till Date </h3>
                 </div>
                 <div class="icon-case">
@@ -24,7 +114,7 @@
             </div>
             <div class="card">
                 <div class="box">
-                    <h1> ----- </h1>
+                    <h1> <?php echo $paidBillCount?> </h1>
                     <h3> Payments Made </h3>
                 </div>
                 <div class="icon-case">
@@ -33,7 +123,7 @@
             </div>
             <div class="card">
                 <div class="box">
-                    <h1> ----</h1>
+                    <h1> <?php echo $unpaidBillCount?> </h1>
                     <h3> Unpaid Bills </h3>
                 </div>
                 <div class="icon-case">
@@ -42,7 +132,7 @@
             </div>
             <div class="card">
                 <div class="box">
-                    <h1>---- </h1>
+                    <h1> <?php echo $unverifiedReceiptsCount?> </h1>    
                     <h3> Unverified Payments </h3>
                 </div>
                 <div class="icon-case">
@@ -52,18 +142,161 @@
         </div>
         
         <div class="content-2">
-            <i id="bell" class="fas fa-solid fa-bell"></i>
-            <h2>Upcoming Payment </h2> <br>  
-            <div class="search-bar">
-                <form id="search-bar" action="./Search.php">
-                    <input class="search-field" type="text" placeholder="Year.." name="search">
-                    <input class="search-field" type="text" placeholder="Installment Number.." name="search">
-                    <input class="search-field" type="text" placeholder="Amount.." name="search">
-                    <button id="search-button" type="submit"><i class="fa fa-search"></i></button>
-                </form>
+            <h2>Fee Overview for <?php echo $prgmID . " " . $enrYear?></h2>
+            <div class="fee-card">
+                <div class="inst-card">
+                    <h3>Admission Fee</h3>
+                    <?php 
+                        if (in_array('Admission', $installments)) {
+                            echo "Paid";
+                        }
+                    ?>
+                </div>
             </div>
-
-                
+            <div class="fee-card">
+                <div class="inst-card">
+                    <h3>Installment 1</h3>
+                    <?php 
+                        if (in_array('1', $installments)) {
+                            echo "Paid";
+                        }
+                    ?>
+                </div>
+                <div class="inst-card">
+                    <h3>Installment 2</h3>
+                    <?php 
+                        if (in_array('2', $installments)) {
+                            echo "Paid";
+                        }
+                    ?>
+                </div>
+            </div>
+            <div class="fee-card">
+                <div class="inst-card">
+                    <h3>Installment 3</h3>
+                    <?php 
+                        if (in_array('3', $installments)) {
+                            echo "Paid";
+                        }
+                    ?>
+                </div>
+                <div class="inst-card">
+                    <h3>Installment 4</h3>
+                    <?php 
+                        if (in_array('4', $installments)) {
+                            echo "Paid";
+                        }
+                    ?>
+                </div>
+            </div>
+            <div class="fee-card">
+                <div class="inst-card">
+                    <h3>Installment 5</h3>
+                    <?php 
+                        if (in_array('5', $installments)) {
+                            echo "Paid";
+                        }
+                    ?>
+                </div>
+                <div class="inst-card">
+                    <h3>Installment 6</h3>
+                    <?php 
+                        if (in_array('6', $installments)) {
+                            echo "Paid";
+                        }
+                    ?>
+                </div>
+            </div>
+            <div class="fee-card">
+                <div class="inst-card">
+                    <h3>Installment 7</h3>
+                    <?php 
+                        if (in_array('7', $installments)) {
+                            echo "Paid";
+                        }
+                    ?>
+                </div>
+                <div class="inst-card">
+                    <h3>Installment 8</h3>
+                    <?php 
+                        if (in_array('8', $installments)) {
+                            echo "Paid";
+                        }
+                    ?>
+                </div>
+            </div>
+            <div class="fee-card">
+                <div class="inst-card">
+                    <h3>Installment 9</h3>
+                    <?php 
+                        if (in_array('9', $installments)) {
+                            echo "Paid";
+                        }
+                    ?>
+                </div>
+                <div class="inst-card">
+                    <h3>Installment 10</h3>
+                    <?php 
+                        if (in_array('10', $installments)) {
+                            echo "Paid";
+                        }
+                    ?>
+                </div>
+            </div>
+            <div class="fee-card">
+                <div class="inst-card">
+                    <h3>Installment 11</h3>
+                    <?php 
+                        if (in_array('11', $installments)) {
+                            echo "Paid";
+                        }
+                    ?>
+                </div>
+                <div class="inst-card">
+                    <h3>Installment 12</h3>
+                    <?php 
+                        if (in_array('12', $installments)) {
+                            echo "Paid";
+                        }
+                    ?>
+                </div>
+            </div>
+            <div class="fee-card">
+                <div class="inst-card">
+                    <h3>Installment 13</h3>
+                    <?php 
+                        if (in_array('13', $installments)) {
+                            echo "Paid";
+                        }
+                    ?>
+                </div>
+                <div class="inst-card">
+                    <h3>Installment 14</h3>
+                    <?php 
+                        if (in_array('14', $installments)) {
+                            echo "Paid";
+                        }
+                    ?>
+                </div>
+            </div>
+            <div class="fee-card">
+                <div class="inst-card">
+                    <h3>Installment 15</h3>
+                    <?php 
+                        if (in_array('15', $installments)) {
+                            echo "Paid";
+                        }
+                    ?>
+                </div>
+                <div class="inst-card">
+                    <h3>Installment 16</h3>
+                    <?php 
+                        if (in_array('16', $installments)) {
+                            echo "Paid";
+                        }
+                    ?>
+                </div>
+            </div>
         </div>
     </div>
 </div>
@@ -120,67 +353,25 @@
         box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);  
     }
 
-    .container .content .content-2 h2 {
-        font-size: 28px;
+    .content-2 h2 {
         color: white;
     }
 
-    .content-2 .search-bar {
+    .content-2 .fee-card {
         display: flex;
-        
+        justify-content: center;
+        gap: 2rem;
+        width: 100%;
     }
 
-    #view-all{
-        width: 100px;
-        height: 20px;
-        font: 18px;
-        background-color: #f59090;
-        color: white;
-        border: 2px solid white;
-        border-radius: 5px;
-        float: right;
-    }
-    .container .content .content-2 table {
-        width: auto;
-        border: 3px solid white;
-        border-radius: 4px;
+    .content-2 .fee-card .inst-card {
+        border-radius: 12px;
+        color: black;
         background-color: white;
-    }
-    
-    th{
-        background-color:  #f59090;
-        color: white;
-        padding: 10px;
-        font-size: 18px;
+        margin: .5rem 1rem;
+        padding: 2rem;
     }
 
-    td{
-        border: 2px solid black;
-        border-collapse: collapse;
-        text-align: center;
-        font-size: 18px;
-    }
-
-    .search-field{
-        padding: 5px;
-        margin-top: 10px;
-        margin-right: 0px;
-        font-size: 16px;
-        border: 2px solid black;
-        border-radius: 5px;
-        width: 200px;
-    }
-
-    #search-button{
-        padding: 5px;
-        margin-right: 30px;
-        margin-left: 0;
-        font-size: 16px;
-        background: white;
-        border: 2px solid black;
-        cursor: pointer;
-        border-radius: 5px;   
-    }
 </style>
 
 <?php

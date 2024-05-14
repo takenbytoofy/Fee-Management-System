@@ -64,6 +64,11 @@
             <input class="search-field" type="text" placeholder="Student ID..." name="id_search">
             <input class="search-field" type="text" placeholder="Program ID.." name="prgm_search">
             <input class="search-field" type="text" placeholder="Enrollment Year..." name="year_search">
+            <select class='search-field' name='status_search'>
+                <option disabled selected value>
+                <option value="Paid">Paid</option>
+                <option value="Unpaid">Unpaid</option>
+            </select>
             <button id="search-button" type="submit"><i class="fa fa-search"></i></button>
         </form>
 

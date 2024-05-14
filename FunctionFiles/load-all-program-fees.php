@@ -7,7 +7,7 @@
     if (isset($_POST['year_search'])) {$year = $_POST['year_search'];} else {$year = '';}
 
     $viewProgramFeesQuery = 
-        "SELECT Prgm_ID, Enr_year, admission_fee, 
+        "SELECT Prgm_ID, Enr_year, admission_fee, inst_1,
         (inst_1 + inst_2 + inst_3 + inst_4 + inst_5 + inst_6 + inst_7 + inst_8 + inst_9 + inst_10 + inst_11 + inst_12 + inst_13 + inst_14 + inst_15 + inst_16) AS total_tuition
          FROM fee_structure
          WHERE (Prgm_ID LIKE '%$id%') 
@@ -71,6 +71,7 @@
                         <th>Program ID</th>
                         <th>Enrollment Year</th>
                         <th>Admission Fee</th>
+                        <th>Per Installment</th>
                         <th>Total Tuition Fee</th>
                         <th>Action</th>
                     </tr>
@@ -80,21 +81,23 @@
                     $prgmID = $dataRow['Prgm_ID'];
                     $enrYear = $dataRow['Enr_year'];
                     $admFee = $dataRow['admission_fee'];
+                    $instFee = $dataRow['inst_1'];
                     $tuitionFee = $dataRow['total_tuition'];
+                    
+                    $url = "PrgmID=".$prgmID."EnrYear=".$enrYear;
+                    
+                    ?>
 
-                $url = "PrgmID=".$prgmID."EnrYear=".$enrYear;
-        
-        ?>
+<tr>
+    <td><?php echo $prgmID; ?></td>
+    <td><?php echo $enrYear; ?></td>
+    <td><?php echo $admFee; ?></td>
+    <td><?php echo $instFee; ?></td>
+    <td><?php echo $tuitionFee; ?></td>
+    <td><button id='view-more-button' onclick="window.open('programProfile.php?<?php echo $url ?>','_self')">View</button>
+</tr>
 
-            <tr>
-                <td><?php echo $prgmID; ?></td>
-                <td><?php echo $enrYear; ?></td>
-                <td><?php echo $admFee; ?></td>
-                <td><?php echo $tuitionFee; ?></td>
-                <td><button id='view-more-button' onclick="window.open('programProfile.php?<?php echo $url ?>','_self')">Edit</button>
-            </tr>
-
-        <?php
+<?php
                 }
 
             } else {

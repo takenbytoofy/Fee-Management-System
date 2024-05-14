@@ -93,12 +93,21 @@
     .bill-details-container {
         padding: 2rem 2rem;
         display: flex;
+        flex-direction: column;
         align-items: center;
         justify-content: center;
         gap: 0.5rem;
         background-color: #FFFFFF;
         box-shadow: 0 0.5rem 0.8rem rgba(0, 0, 0, 20%);
         border-radius: 24px;
+    }
+
+    .bill-details-container .bill-card {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
     }
 
 </style>
@@ -145,10 +154,20 @@
         <h2>Bills</h2>
         <div class="bill-details-container">
             <div class="bill-card">
-                Paid Bills
+                <h3>Unverified Receipts</h3>
+                <?php include('../FunctionFiles/admin-load-unverified-receipts.php');?>
             </div>
             <div class="bill-card">
-                Pending Bills
+                <h3>Unpaid Bills</h3>
+                <?php include('../FunctionFiles/admin-load-unpaid-bills.php');?>
+            </div>
+            <div class="bill-card">
+                <h3>Declined Receipts</h3>
+                <?php include('../FunctionFiles/admin-load-declined-receipts.php');?>
+            </div>
+            <div class="bill-card">
+                <h3>Paid Bills</h3>
+                <?php include('../FunctionFiles/admin-load-paid-bills.php');?>
             </div>
         </div>
     </div>
